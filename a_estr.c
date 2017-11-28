@@ -1,5 +1,5 @@
 #include "bmp.h"
-#include "a-expan.h"
+#include "a_estr.h"
 #include "graph.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -15,29 +15,37 @@ double fmin(double i, double j) {
 }
 
 double pairwise(double i, double j, double T, int lambda) {
-    return fmin(1.0 * dabs(i, j) , T);
+    return lambda * fmin((i - j) * (i - j), T);
 }
 
-double data(int *I, int a, double i) {
-    return 1.0 * dabs(I[a], i) ;
+double data(int i, int label, int width, int *I_left, int *I_right) {
+    double data = 0;
+    // return 1.0 * dabs(label, I_left[i]);
+    //leftの中のものがどこにあるか
+    if ((i - 1) / width == (i - label - 1) / width) {
+        data = (I_left[i] - I_right[i - label]) * (I_left[i] - I_right[i - label]);
+    }else data = INF;
+
+    return sqrt(data);
 }
 
-double energy(Graph *G, int *label, int *I, double T, int lambda) {
+double energy(Graph *G, int *label,  double T, int lambda, int width, int *I_left, int *I_right) {
     int i;
     double energy = 0;
-    // Dterm
+    //* Dterm
     for (i = 1; i <= G->n - 2; i++) {
-        energy += data(I, i, label[i]);
+        energy += data(i, label[i], width, I_left, I_right);
+        // energy += data(I_left[i], label[i]);
     }
+    // */
     // Vterm
     for (i = 1; i <= G->m - 2 * (G->n - 2); i++) {
-        energy += pairwise(label[G->tail[i]] , label[G->head[i]], T, lambda);
+        energy += pairwise(label[G->tail[i]], label[G->head[i]], T, lambda);
     }
     return energy;
 }
 
-
-int update_labels(Graph *G, int alpha, int *label, int *t, int *I, double T, int lambda) {
+int update_labels(Graph *G, int *label, int alpha, int width, double T, int lambda, int *t, int *I_left, int *I_right) {
     int i, res;
     int *temp;
     double prev_energy, new_energy;
@@ -56,8 +64,8 @@ int update_labels(Graph *G, int alpha, int *label, int *t, int *I, double T, int
     //     temp[i] = t[i];
     // }
 
-    prev_energy = energy(G, label, I, T, lambda);
-    new_energy = energy(G, temp, I, T, lambda);
+    prev_energy = energy(G, label, width, T, lambda, I_left, I_right);
+    new_energy = energy(G, temp, width, T, lambda, I_left, I_right);
 
     if (new_energy < prev_energy) {
         for (i = 1; i <= G->n - 2; i++) label[i] = temp[i];
@@ -73,7 +81,7 @@ int update_labels(Graph *G, int alpha, int *label, int *t, int *I, double T, int
     free(temp);
     return res;
 }
-void set_capacity(Graph *G, int alpha, int *label, int *I, double T, int lambda) {
+void set_capacity(Graph *G, int *label, int width, int alpha, double T, int lambda, int *I_left, int *I_right) {
     int i, s2i_begin, i2t_begin, grids_node;
     double A, B, C, D, temp;
     //　source->各ノード　を示す枝の開始位置
@@ -92,12 +100,13 @@ void set_capacity(Graph *G, int alpha, int *label, int *I, double T, int lambda)
             deleteAdjEdge(G, i + grids_node);
         }
     }
+
     // set Dterm
      for(i = 1; i < G->n - 1; i++){
-        if(pairwise(I[i],label[i], T, lambda) > pairwise(I[i],alpha, T, lambda)){
-            G->capa[s2i_begin -1 + i] +=  (data(I, i, label[i]) - data(I, i, alpha));
+        if(data(i, label[i], width, I_left, I_right) > data(i, alpha, width, I_left, I_right)){
+            G->capa[s2i_begin - 1 + i] +=  (data(i, label[i], width, I_left, I_right) - data(i, alpha, width, I_left, I_right));
         }else{
-            G->capa[i2t_begin - 1  + i] += (data(I, i,alpha) - data(I, i, label[i]));
+            G->capa[i2t_begin - 1  + i] += (data(i, alpha, width, I_left, I_right) - data(i, label[i], width, I_left, I_right));
         }
      }
 
@@ -173,4 +182,30 @@ void set_all_edge(Graph *G, int height, int width) {
         edge_count++;
     }
     return;
+}
+
+double err_rate(img output, img truth, int scale) {
+    int i, error_count = 0;
+    double err;
+    if (truth.data[0][0].r) {
+        for(i = 1; i <= (output.height) * (output.width); i++) {   
+            if (abs(output.data[(i - 1) / output.width][(i - 1) % output.width].r - truth.data[(i - 1) / truth.width][(i - 1) % truth.width].r ) 
+                >= scale + 1) {
+                error_count++;
+            }                            
+        }
+    } else {
+        for(i = 1; i <= (output.height) * (output.width); i++) {
+            if ((i - 1) / output.width >= scale && (i - 1) % output.width >= scale &&
+                (i - 1) / output.width <= output.height - scale && (i - 1) % output.width <= output.width - scale) {
+                if (abs(output.data[(i - 1) / output.width][(i - 1) % output.width].r - truth.data[(i - 1) / truth.width][(i - 1) % truth.width].r ) 
+                    >= scale + 1) {
+                    error_count++;
+                }
+            }                            
+        }
+    }
+
+    err = 100 * error_count / (double)(truth.height * truth.width);
+    return err;
 }
