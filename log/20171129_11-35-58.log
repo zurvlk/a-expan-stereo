@@ -1,0 +1,672 @@
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_1_1.bmp
+label_size: 64
+lambda: 1
+T: 1.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 230910.000000
+Run time[64.21]
+Error rate : 30.442074
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_2_1.bmp
+label_size: 64
+lambda: 2
+T: 1.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 265498.000000
+Run time[74.86]
+Error rate : 25.541333
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_3_1.bmp
+label_size: 64
+lambda: 3
+T: 1.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 286468.000000
+Run time[64.43]
+Error rate : 25.195259
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_4_1.bmp
+label_size: 64
+lambda: 4
+T: 1.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 302953.000000
+Run time[87.40]
+Error rate : 27.256296
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_5_1.bmp
+label_size: 64
+lambda: 5
+T: 1.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 316688.000000
+Run time[82.32]
+Error rate : 29.805037
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_6_1.bmp
+label_size: 64
+lambda: 6
+T: 1.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 328822.000000
+Run time[83.78]
+Error rate : 29.255704
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_7_1.bmp
+label_size: 64
+lambda: 7
+T: 1.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 339583.000000
+Run time[98.79]
+Error rate : 29.576296
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_1_2.bmp
+label_size: 64
+lambda: 1
+T: 4.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 269914.000000
+Run time[136.33]
+Error rate : 23.248000
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_2_2.bmp
+label_size: 64
+lambda: 2
+T: 4.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 307118.000000
+Run time[125.54]
+Error rate : 22.882370
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_3_2.bmp
+label_size: 64
+lambda: 3
+T: 4.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 336164.000000
+Run time[65.14]
+Error rate : 25.329778
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_4_2.bmp
+label_size: 64
+lambda: 4
+T: 4.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 361494.000000
+Run time[84.83]
+Error rate : 27.281185
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_5_2.bmp
+label_size: 64
+lambda: 5
+T: 4.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 385046.000000
+Run time[73.97]
+Error rate : 28.654815
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_6_2.bmp
+label_size: 64
+lambda: 6
+T: 4.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 405020.000000
+Run time[76.58]
+Error rate : 29.640296
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_7_2.bmp
+label_size: 64
+lambda: 7
+T: 4.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 425216.000000
+Run time[61.71]
+Error rate : 30.479407
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_1_3.bmp
+label_size: 64
+lambda: 1
+T: 9.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 290710.000000
+Run time[94.83]
+Error rate : 22.403556
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_2_3.bmp
+label_size: 64
+lambda: 2
+T: 9.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 336664.000000
+Run time[82.17]
+Error rate : 23.923556
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_3_3.bmp
+label_size: 64
+lambda: 3
+T: 9.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 376334.000000
+Run time[101.59]
+Error rate : 25.053630
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_4_3.bmp
+label_size: 64
+lambda: 4
+T: 9.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 408708.000000
+Run time[90.65]
+Error rate : 27.745778
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_5_3.bmp
+label_size: 64
+lambda: 5
+T: 9.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 438718.000000
+Run time[76.43]
+Error rate : 29.065481
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_6_3.bmp
+label_size: 64
+lambda: 6
+T: 9.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 466339.000000
+Run time[97.08]
+Error rate : 29.637926
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_7_3.bmp
+label_size: 64
+lambda: 7
+T: 9.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 493021.000000
+Run time[75.98]
+Error rate : 30.040296
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_1_4.bmp
+label_size: 64
+lambda: 1
+T: 16.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 308845.000000
+Run time[220.92]
+Error rate : 23.767704
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_2_4.bmp
+label_size: 64
+lambda: 2
+T: 16.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 367728.000000
+Run time[108.23]
+Error rate : 23.378963
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_3_4.bmp
+label_size: 64
+lambda: 3
+T: 16.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 414520.000000
+Run time[81.72]
+Error rate : 25.720889
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_4_4.bmp
+label_size: 64
+lambda: 4
+T: 16.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 454794.000000
+Run time[156.01]
+Error rate : 28.628741
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_5_4.bmp
+label_size: 64
+lambda: 5
+T: 16.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 494175.000000
+Run time[145.03]
+Error rate : 28.908444
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_6_4.bmp
+label_size: 64
+lambda: 6
+T: 16.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 524844.000000
+Run time[97.16]
+Error rate : 32.288000
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_7_4.bmp
+label_size: 64
+lambda: 7
+T: 16.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 556608.000000
+Run time[100.79]
+Error rate : 32.852148
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_1_5.bmp
+label_size: 64
+lambda: 1
+T: 25.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 322700.000000
+Run time[117.36]
+Error rate : 23.225481
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_2_5.bmp
+label_size: 64
+lambda: 2
+T: 25.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 396285.000000
+Run time[241.45]
+Error rate : 25.122963
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_3_5.bmp
+label_size: 64
+lambda: 3
+T: 25.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 454874.000000
+Run time[97.66]
+Error rate : 27.317333
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_4_5.bmp
+label_size: 64
+lambda: 4
+T: 25.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 502105.000000
+Run time[130.08]
+Error rate : 29.806815
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_5_5.bmp
+label_size: 64
+lambda: 5
+T: 25.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 551330.000000
+Run time[97.05]
+Error rate : 32.834370
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_6_5.bmp
+label_size: 64
+lambda: 6
+T: 25.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 574370.000000
+Run time[106.57]
+Error rate : 34.061630
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_7_5.bmp
+label_size: 64
+lambda: 7
+T: 25.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 614893.000000
+Run time[143.59]
+Error rate : 34.717630
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_1_6.bmp
+label_size: 64
+lambda: 1
+T: 36.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 337135.000000
+Run time[191.92]
+Error rate : 23.994667
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_2_6.bmp
+label_size: 64
+lambda: 2
+T: 36.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 425838.000000
+Run time[80.67]
+Error rate : 25.960889
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_3_6.bmp
+label_size: 64
+lambda: 3
+T: 36.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 487758.000000
+Run time[265.47]
+Error rate : 30.384593
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_4_6.bmp
+label_size: 64
+lambda: 4
+T: 36.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 545953.000000
+Run time[119.96]
+Error rate : 31.972741
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_5_6.bmp
+label_size: 64
+lambda: 5
+T: 36.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 585346.000000
+Run time[197.57]
+Error rate : 39.152593
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_6_6.bmp
+label_size: 64
+lambda: 6
+T: 36.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 627893.000000
+Run time[187.96]
+Error rate : 41.328000
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_7_6.bmp
+label_size: 64
+lambda: 7
+T: 36.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 654669.000000
+Run time[185.53]
+Error rate : 37.549037
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_1_7.bmp
+label_size: 64
+lambda: 1
+T: 49.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 352308.000000
+Run time[151.11]
+Error rate : 24.270222
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_2_7.bmp
+label_size: 64
+lambda: 2
+T: 49.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 445917.000000
+Run time[287.89]
+Error rate : 29.328000
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_3_7.bmp
+label_size: 64
+lambda: 3
+T: 49.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 510405.000000
+Run time[204.41]
+Error rate : 30.432593
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_4_7.bmp
+label_size: 64
+lambda: 4
+T: 49.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 568764.000000
+Run time[223.63]
+Error rate : 36.145778
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_5_7.bmp
+label_size: 64
+lambda: 5
+T: 49.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 610854.000000
+Run time[424.98]
+Error rate : 35.924741
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_6_7.bmp
+label_size: 64
+lambda: 6
+T: 49.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 666066.000000
+Run time[118.74]
+Error rate : 40.064593
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_7_7.bmp
+label_size: 64
+lambda: 7
+T: 49.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 729517.000000
+Run time[208.41]
+Error rate : 43.769481
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_1_8.bmp
+label_size: 64
+lambda: 1
+T: 64.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 366583.000000
+Run time[157.26]
+Error rate : 25.646222
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_2_8.bmp
+label_size: 64
+lambda: 2
+T: 64.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 462075.000000
+Run time[243.15]
+Error rate : 29.436444
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_3_8.bmp
+label_size: 64
+lambda: 3
+T: 64.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 534591.000000
+Run time[101.17]
+Error rate : 33.367704
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_4_8.bmp
+label_size: 64
+lambda: 4
+T: 64.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 591344.000000
+Run time[378.69]
+Error rate : 35.800296
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_5_8.bmp
+label_size: 64
+lambda: 5
+T: 64.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 631929.000000
+Run time[191.27]
+Error rate : 37.325630
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_6_8.bmp
+label_size: 64
+lambda: 6
+T: 64.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 720581.000000
+Run time[105.88]
+Error rate : 48.392296
+----------------------------------------------
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_7_8.bmp
+label_size: 64
+lambda: 7
+T: 64.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 752088.000000
+Run time[114.08]
+Error rate : 49.710815
+----------------------------------------------
