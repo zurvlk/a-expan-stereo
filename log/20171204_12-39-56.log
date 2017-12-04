@@ -1,0 +1,115 @@
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_5_1.bmp
+label_size: 15
+lambda: 5
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 37951.000000
+Energy 35439.000000
+Energy 35439.000000
+Energy (after): 35439.000000
+Run time[6.33]
+iteration: 37
+Error rate : 11.693432
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_5_2.bmp
+label_size: 15
+lambda: 5
+T: 2.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 46457.000000
+Energy 43577.000000
+Energy 43577.000000
+Energy (after): 43577.000000
+Run time[7.41]
+iteration: 37
+Error rate : 15.548141
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_5_3.bmp
+label_size: 15
+lambda: 5
+T: 3.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 51790.000000
+Energy 49371.000000
+Energy 49371.000000
+Energy (after): 49371.000000
+Run time[6.18]
+iteration: 32
+Error rate : 17.108832
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_5_4.bmp
+label_size: 15
+lambda: 5
+T: 4.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 54963.000000
+Energy 54963.000000
+Energy (after): 54963.000000
+Run time[6.30]
+iteration: 27
+Error rate : 18.494104
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_5_5.bmp
+label_size: 15
+lambda: 5
+T: 5.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 55700.000000
+Energy 55700.000000
+Energy (after): 55700.000000
+Run time[6.02]
+iteration: 27
+Error rate : 19.631619
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_5_6.bmp
+label_size: 15
+lambda: 5
+T: 6.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 55700.000000
+Energy 55700.000000
+Energy (after): 55700.000000
+Run time[5.84]
+iteration: 27
+Error rate : 19.631619
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_5_7.bmp
+label_size: 15
+lambda: 5
+T: 7.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 55700.000000
+Energy 55700.000000
+Energy (after): 55700.000000
+Run time[5.62]
+iteration: 27
+Error rate : 19.631619
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_5_8.bmp
+label_size: 15
+lambda: 5
+T: 8.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 55700.000000
+Energy 55700.000000
+Energy (after): 55700.000000
+Run time[5.99]
+iteration: 27
+Error rate : 19.631619
