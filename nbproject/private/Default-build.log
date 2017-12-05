@@ -1,0 +1,15 @@
+gcc -c graph.c -Wall -lm
+gcc -c bmp.c -Wall -lm
+gcc -c ford_fulkerson.c -Wall -lm
+gcc -c queue_stack.c -Wall -lm
+gcc -c a_edrv.c -Wall -lm
+gcc -c a-expan.c -Wall -lm
+a-expan.c:21:8: error: conflicting types for ‘data’
+ double data(int *I, int a, double i) {
+        ^~~~
+In file included from a-expan.c:2:0:
+a-expan.h:6:8: note: previous declaration of ‘data’ was here
+ double data(int i, int label, int width, int *I_left, int *I_right);
+        ^~~~
+Makefile:16: ターゲット 'a-expan.o' のレシピで失敗しました
+make: *** [a-expan.o] エラー 1

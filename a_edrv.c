@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[]) {
     long int i, j, node, edge;
-    int scale = 16, alpha, label_size, last;
+    int scale = 16, alpha, label_size, last, iteration;
     int *I, *t, *label;
     int lambda = 1;
     // I->入力画像の輝度, t->2値変数, label->ラベル付け
@@ -89,6 +89,7 @@ int main(int argc, char *argv[]) {
     start = clock();
     last = label_size;
     flag = 1;
+    iteration = 0;
     while (flag > 0) {
         temp = energy(&G, label, I, T, lambda);
         for (alpha = 0; alpha <= label_size; alpha++) {
@@ -101,7 +102,6 @@ int main(int argc, char *argv[]) {
             // capacity設定
             set_capacity(&G, alpha, label, I, T, lambda);
             // capacity(&G, label, I, alpha);
-
 #if _OUTPUT_INFO_
             printf("Maximum Flow: %5.2lf\n", boykov_kolmogorov(G, f, t));
             printf("after bk-max-f\n");
@@ -110,6 +110,7 @@ int main(int argc, char *argv[]) {
             boykov_kolmogorov(G, f, t);
 #endif
             //削除された枝はvoykov_kolmogorov(G, f, t)で再度リストに追加されている
+            iteration++;
 
             // tを基にラベル更新
 #if _CHK_ENERGY_
@@ -137,11 +138,12 @@ int main(int argc, char *argv[]) {
 #endif
         }
         flag = temp - energy(&G, label, I, T, lambda);
-        printf("Energy %lf\n", energy(&G, label, I, T, lambda));
+        // printf("Energy %lf\n", energy(&G, label, I, T, lambda));
     }
 
     printf("Energy (after): %lf\n", energy(&G, label, I, T, lambda));
     printf("Run time[%.2lf]\n", (double) (clock() - start) / CLOCKS_PER_SEC);
+    printf("iteration: %d\n", iteration);
 
 #if _OUTPUT_GRAPH_
     printf("---Graph information---\n");

@@ -1,0 +1,672 @@
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_1_1.bmp
+label_size: 16
+lambda: 1
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 23020.000000
+Run time[7.34]
+Error rate : 9.170645
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_2_1.bmp
+label_size: 16
+lambda: 2
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 27391.000000
+Run time[7.02]
+Error rate : 9.502496
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_3_1.bmp
+label_size: 16
+lambda: 3
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 30519.000000
+Run time[6.86]
+Error rate : 10.805483
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_4_1.bmp
+label_size: 16
+lambda: 4
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 33183.000000
+Run time[6.70]
+Error rate : 11.249457
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_5_1.bmp
+label_size: 16
+lambda: 5
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 35439.000000
+Run time[6.38]
+Error rate : 11.693432
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_6_1.bmp
+label_size: 16
+lambda: 6
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 37566.000000
+Run time[6.55]
+Error rate : 13.429543
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_7_1.bmp
+label_size: 16
+lambda: 7
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 40194.000000
+Run time[7.10]
+Error rate : 14.540835
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_1_2.bmp
+label_size: 16
+lambda: 1
+T: 4.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 29186.000000
+Run time[7.27]
+Error rate : 8.489764
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_2_2.bmp
+label_size: 16
+lambda: 2
+T: 4.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 37309.000000
+Run time[7.04]
+Error rate : 11.688006
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_3_2.bmp
+label_size: 16
+lambda: 3
+T: 4.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 43892.000000
+Run time[7.47]
+Error rate : 13.109447
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_4_2.bmp
+label_size: 16
+lambda: 4
+T: 4.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 49453.000000
+Run time[5.75]
+Error rate : 15.196398
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_5_2.bmp
+label_size: 16
+lambda: 5
+T: 4.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 54963.000000
+Run time[5.59]
+Error rate : 18.494104
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_6_2.bmp
+label_size: 16
+lambda: 6
+T: 4.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 59074.000000
+Run time[5.83]
+Error rate : 20.849609
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_7_2.bmp
+label_size: 16
+lambda: 7
+T: 4.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 62949.000000
+Run time[6.12]
+Error rate : 20.845088
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_1_3.bmp
+label_size: 16
+lambda: 1
+T: 9.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 32001.000000
+Run time[6.94]
+Error rate : 10.635489
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_2_3.bmp
+label_size: 16
+lambda: 2
+T: 9.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 41243.000000
+Run time[7.49]
+Error rate : 16.364656
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_3_3.bmp
+label_size: 16
+lambda: 3
+T: 9.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 46115.000000
+Run time[5.07]
+Error rate : 17.627857
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_4_3.bmp
+label_size: 16
+lambda: 4
+T: 9.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[5.41]
+Error rate : 18.200231
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_5_3.bmp
+label_size: 16
+lambda: 5
+T: 9.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 55700.000000
+Run time[5.80]
+Error rate : 19.631619
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_6_3.bmp
+label_size: 16
+lambda: 6
+T: 9.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 59447.000000
+Run time[6.31]
+Error rate : 20.988860
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_7_3.bmp
+label_size: 16
+lambda: 7
+T: 9.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 63351.000000
+Run time[6.76]
+Error rate : 20.984339
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_1_4.bmp
+label_size: 16
+lambda: 1
+T: 16.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 33619.000000
+Run time[7.67]
+Error rate : 11.184353
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_2_4.bmp
+label_size: 16
+lambda: 2
+T: 16.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 41243.000000
+Run time[7.86]
+Error rate : 16.364656
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_3_4.bmp
+label_size: 16
+lambda: 3
+T: 16.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 46115.000000
+Run time[5.67]
+Error rate : 17.627857
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_4_4.bmp
+label_size: 16
+lambda: 4
+T: 16.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[5.93]
+Error rate : 18.200231
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_5_4.bmp
+label_size: 16
+lambda: 5
+T: 16.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 55700.000000
+Run time[7.21]
+Error rate : 19.631619
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_6_4.bmp
+label_size: 16
+lambda: 6
+T: 16.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 59447.000000
+Run time[7.44]
+Error rate : 20.988860
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_7_4.bmp
+label_size: 16
+lambda: 7
+T: 16.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 63351.000000
+Run time[9.08]
+Error rate : 20.984339
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_1_5.bmp
+label_size: 16
+lambda: 1
+T: 25.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 33945.000000
+Run time[10.12]
+Error rate : 13.454861
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_2_5.bmp
+label_size: 16
+lambda: 2
+T: 25.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 41243.000000
+Run time[8.21]
+Error rate : 16.364656
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_3_5.bmp
+label_size: 16
+lambda: 3
+T: 25.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 46115.000000
+Run time[6.21]
+Error rate : 17.627857
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_4_5.bmp
+label_size: 16
+lambda: 4
+T: 25.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[7.35]
+Error rate : 18.200231
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_5_5.bmp
+label_size: 16
+lambda: 5
+T: 25.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 55700.000000
+Run time[7.84]
+Error rate : 19.631619
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_6_5.bmp
+label_size: 16
+lambda: 6
+T: 25.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 59447.000000
+Run time[8.21]
+Error rate : 20.988860
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_7_5.bmp
+label_size: 16
+lambda: 7
+T: 25.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 63351.000000
+Run time[8.98]
+Error rate : 20.984339
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_1_6.bmp
+label_size: 16
+lambda: 1
+T: 36.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 33945.000000
+Run time[11.09]
+Error rate : 13.454861
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_2_6.bmp
+label_size: 16
+lambda: 2
+T: 36.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 41243.000000
+Run time[8.56]
+Error rate : 16.364656
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_3_6.bmp
+label_size: 16
+lambda: 3
+T: 36.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 46115.000000
+Run time[6.17]
+Error rate : 17.627857
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_4_6.bmp
+label_size: 16
+lambda: 4
+T: 36.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[6.96]
+Error rate : 18.200231
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_5_6.bmp
+label_size: 16
+lambda: 5
+T: 36.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 55700.000000
+Run time[7.92]
+Error rate : 19.631619
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_6_6.bmp
+label_size: 16
+lambda: 6
+T: 36.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 59447.000000
+Run time[8.80]
+Error rate : 20.988860
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_7_6.bmp
+label_size: 16
+lambda: 7
+T: 36.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 63351.000000
+Run time[9.66]
+Error rate : 20.984339
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_1_7.bmp
+label_size: 16
+lambda: 1
+T: 49.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 33945.000000
+Run time[10.66]
+Error rate : 13.454861
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_2_7.bmp
+label_size: 16
+lambda: 2
+T: 49.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 41243.000000
+Run time[9.03]
+Error rate : 16.364656
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_3_7.bmp
+label_size: 16
+lambda: 3
+T: 49.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 46115.000000
+Run time[6.54]
+Error rate : 17.627857
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_4_7.bmp
+label_size: 16
+lambda: 4
+T: 49.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[7.28]
+Error rate : 18.200231
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_5_7.bmp
+label_size: 16
+lambda: 5
+T: 49.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 55700.000000
+Run time[8.30]
+Error rate : 19.631619
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_6_7.bmp
+label_size: 16
+lambda: 6
+T: 49.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 59447.000000
+Run time[8.98]
+Error rate : 20.988860
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_7_7.bmp
+label_size: 16
+lambda: 7
+T: 49.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 63351.000000
+Run time[9.89]
+Error rate : 20.984339
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_1_8.bmp
+label_size: 16
+lambda: 1
+T: 64.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 33945.000000
+Run time[11.75]
+Error rate : 13.454861
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_2_8.bmp
+label_size: 16
+lambda: 2
+T: 64.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 41243.000000
+Run time[9.60]
+Error rate : 16.364656
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_3_8.bmp
+label_size: 16
+lambda: 3
+T: 64.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 46115.000000
+Run time[6.56]
+Error rate : 17.627857
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_4_8.bmp
+label_size: 16
+lambda: 4
+T: 64.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[7.49]
+Error rate : 18.200231
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_5_8.bmp
+label_size: 16
+lambda: 5
+T: 64.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 55700.000000
+Run time[8.29]
+Error rate : 19.631619
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_6_8.bmp
+label_size: 16
+lambda: 6
+T: 64.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 59447.000000
+Run time[9.54]
+Error rate : 20.988860
+----------------------------------------------
+----------------------------------------------
+input_file: input/tsukuba_left.bmp, input/tsukuba_right.bmp
+output_file: output/tsukuba_7_8.bmp
+label_size: 16
+lambda: 7
+T: 64.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy (after): 63351.000000
+Run time[9.86]
+Error rate : 20.984339
+----------------------------------------------

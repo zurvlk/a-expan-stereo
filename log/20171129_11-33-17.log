@@ -1,0 +1,12 @@
+----------------------------------------------
+input_file: input/teddy_left.bmp, input/teddy_right.bmp
+output_file: output/teddy_1_1.bmp
+label_size: 64
+lambda: 1
+T: 1.00
+height 375, width 450
+Energy (before): 1431935.000000
+Energy (after): 230910.000000
+Run time[65.39]
+Error rate : 30.442074
+----------------------------------------------

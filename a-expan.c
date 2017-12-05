@@ -21,6 +21,188 @@ double pairwise(double i, double j, double T, int lambda) {
 double data(int *I, int a, double i) {
     return 1.0 * dabs(I[a], i) ;
 }
+double Dt(int x, img *tmp_l2, img *tmp_r2, int i, int j, int max_label, int image)
+{
+
+    double d_m, d_l, d_r, d_m2, d_l2, d_r2;
+    double  I, I_1 = 0, I_2 = 0;
+    double IR, IG, IB;
+    int RED = 1, GREEN = 1, BLUE = 1;
+
+	if(x == -1 || x == max_label) return INF;
+
+    if(j - x < 0)              return INF;
+
+    while(RED){
+
+	    d_m = tmp_l2->data[i][j].r;
+	    d_m2 =  tmp_r2->data[i][j - x].r;
+
+	    if((j - x - 1 >= 0) && (j - x + 1 <= tmp_r2->width - 1)){
+
+	        d_l2 = (tmp_r2->data[i][j - x].r + tmp_r2->data[i][j - x - 1].r) / 2.0;
+	        d_r2 = (tmp_r2->data[i][j - x].r + tmp_r2->data[i][j - x + 1].r) / 2.0;
+	        if(between(d_l2, d_m, d_m2) == 0)    break;
+	        if(between(d_r2, d_m, d_m2) == 0)    break;
+	        I_1 = min3(fabs(d_m - d_l2), fabs(d_m - d_m2), fabs(d_m - d_r2));              /*特に制約なし*/
+
+	    }else if(j - x - 1 < 0){
+
+	        d_r2 = (tmp_r2->data[i][j - x].r + tmp_r2->data[i][j - x + 1].r) / 2.0;
+	        if(between(d_m2, d_m, d_r2) == 0)    break;
+	        I_1 = min(fabs(d_m - d_m2), fabs(d_m - d_r2));                                /*Rの左端が出る*/
+
+	    }else{
+
+	        d_l2 = (tmp_r2->data[i][j - x].r + tmp_r2->data[i][j - x - 1].r) / 2.0;
+	        if(between(d_l2, d_m, d_m2) == 0)    break;
+	        I_1 = min(fabs(d_m - d_l2), fabs(d_m - d_m2));                                /*Rの右端が出る*/
+	    }
+
+	    if((j != 0) && (j != tmp_l2->width - 1)){
+
+	        d_l = (tmp_l2->data[i][j].r + tmp_l2->data[i][j - 1].r) / 2.0;
+	        d_r = (tmp_l2->data[i][j].r + tmp_l2->data[i][j + 1].r) / 2.0;
+	        if(between(d_l, d_m2, d_m) == 0)    break;
+	        if(between(d_r, d_m2, d_m) == 0)    break;
+	        I_2 = min3(fabs(d_l - d_m2), fabs(d_m - d_m2), fabs(d_r - d_m2));              /*特に制約なし*/
+
+	    }else if(j == 0){
+
+	        d_r = (tmp_l2->data[i][j].r + tmp_l2->data[i][j + 1].r) / 2.0;
+	        if(between(d_m, d_m2, d_r) == 0)    break;
+	        I_2 = min(fabs(d_m - d_m2), fabs(d_r - d_m2));                                /*Lの左端が出る*/
+
+	    }else{
+
+	        d_l = (tmp_l2->data[i][j].r + tmp_l2->data[i][j - 1].r) / 2.0;
+	        if(between(d_l, d_m2, d_m) == 0)    break;
+	        I_2 = min(fabs(d_l - d_m2), fabs(d_m - d_m2));                                /*Lの右端が出る*/
+	    }
+	    RED = 0;
+	}
+    IR = min(I_1, I_2);
+
+    ///////////////////for G of RGB.
+    I_1 = 0;
+    I_2 = 0;
+    while(GREEN){
+	    d_m = tmp_l2->data[i][j].g;
+	    d_m2 =  tmp_r2->data[i][j - x].g;
+
+	    if((j - x - 1 >= 0) && (j - x + 1 <= tmp_r2->width - 1)){
+
+	        d_l2 = (tmp_r2->data[i][j - x].g + tmp_r2->data[i][j - x - 1].g) / 2.0;
+	        d_r2 = (tmp_r2->data[i][j - x].g + tmp_r2->data[i][j - x + 1].g) / 2.0;
+	        if(between(d_l2, d_m, d_m2) == 0)    break;
+	        if(between(d_r2, d_m, d_m2) == 0)    break;
+	        I_1 = min3(fabs(d_m - d_l2), fabs(d_m - d_m2), fabs(d_m - d_r2));              /*特に制約なし*/
+
+	    }else if(j - x - 1 < 0){
+
+	        d_r2 = (tmp_r2->data[i][j - x].g + tmp_r2->data[i][j - x + 1].g) / 2.0;
+	        if(between(d_m2, d_m, d_r2) == 0)    break;
+	        I_1 = min(fabs(d_m - d_m2), fabs(d_m - d_r2));                                /*Rの左端が出る*/
+
+	    }else{
+
+	        d_l2 = (tmp_r2->data[i][j - x].g + tmp_r2->data[i][j - x - 1].g) / 2.0;
+	        if(between(d_l2, d_m, d_m2) == 0)    break;
+	        I_1 = min(fabs(d_m - d_l2), fabs(d_m - d_m2));                                /*Rの右端が出る*/
+	    }
+
+	    if((j != 0) && (j != tmp_l2->width - 1)){
+
+	        d_l = (tmp_l2->data[i][j].g + tmp_l2->data[i][j - 1].g) / 2.0;
+	        d_r = (tmp_l2->data[i][j].g + tmp_l2->data[i][j + 1].g) / 2.0;
+	        if(between(d_l, d_m2, d_m) == 0)    break;
+	        if(between(d_r, d_m2, d_m) == 0)    break;
+	        I_2 = min3(fabs(d_l - d_m2), fabs(d_m - d_m2), fabs(d_r - d_m2));              /*特に制約なし*/
+
+	    }else if(j == 0){
+
+	        d_r = (tmp_l2->data[i][j].g + tmp_l2->data[i][j + 1].g) / 2.0;
+	        if(between(d_m, d_m2, d_r) == 0)    break;
+	        I_2 = min(fabs(d_m - d_m2), fabs(d_r - d_m2));                                /*Lの左端が出る*/
+
+	    }else{
+
+	        d_l = (tmp_l2->data[i][j].g + tmp_l2->data[i][j - 1].g) / 2.0;
+	        if(between(d_l, d_m2, d_m) == 0)    break;
+	        I_2 = min(fabs(d_l - d_m2), fabs(d_m - d_m2));                                /*Lの右端が出る*/
+	    }
+	    GREEN = 0;
+	}
+
+    IG = min(I_1, I_2);
+
+       ///////////////////for B of RGB.
+    I_1 = 0;
+    I_2 = 0;
+    while(BLUE){
+	    d_m = tmp_l2->data[i][j].b;
+	    d_m2 =  tmp_r2->data[i][j - x].b;
+
+	    if((j - x - 1 >= 0) && (j - x + 1 <= tmp_r2->width - 1)){
+
+	        d_l2 = (tmp_r2->data[i][j - x].b + tmp_r2->data[i][j - x - 1].b) / 2.0;
+	        d_r2 = (tmp_r2->data[i][j - x].b + tmp_r2->data[i][j - x + 1].b) / 2.0;
+	        if(between(d_l2, d_m, d_m2) == 0)    break;
+	        if(between(d_r2, d_m, d_m2) == 0)    break;
+	        I_1 = min3(fabs(d_m - d_l2), fabs(d_m - d_m2), fabs(d_m - d_r2));              /*特に制約なし*/
+
+	    }else if(j - x - 1 < 0){
+
+	        d_r2 = (tmp_r2->data[i][j - x].b + tmp_r2->data[i][j - x + 1].b) / 2.0;
+	        if(between(d_m2, d_m, d_r2) == 0)    break;
+	        I_1 = min(fabs(d_m - d_m2), fabs(d_m - d_r2));                                /*Rの左端が出る*/
+
+	    }else{
+
+	        d_l2 = (tmp_r2->data[i][j - x].b + tmp_r2->data[i][j - x - 1].b) / 2.0;
+	        if(between(d_l2, d_m, d_m2) == 0)    break;
+	        I_1 = min(fabs(d_m - d_l2), fabs(d_m - d_m2));                                /*Rの右端が出る*/
+	    }
+
+	    if((j != 0) && (j != tmp_l2->width - 1)){
+
+	        d_l = (tmp_l2->data[i][j].b + tmp_l2->data[i][j - 1].b) / 2.0;
+	        d_r = (tmp_l2->data[i][j].b + tmp_l2->data[i][j + 1].b) / 2.0;
+	        if(between(d_l, d_m2, d_m) == 0)    break;
+	        if(between(d_r, d_m2, d_m) == 0)    break;
+	        I_2 = min3(fabs(d_l - d_m2), fabs(d_m - d_m2), fabs(d_r - d_m2));              /*特に制約なし*/
+
+	    }else if(j == 0){
+
+	        d_r = (tmp_l2->data[i][j].b + tmp_l2->data[i][j + 1].b) / 2.0;
+	        if(between(d_m, d_m2, d_r) == 0)    break;
+	        I_2 = min(fabs(d_m - d_m2), fabs(d_r - d_m2));                                /*Lの左端が出る*/
+
+	    }else{
+
+	        d_l = (tmp_l2->data[i][j].b + tmp_l2->data[i][j - 1].b) / 2.0;
+	        if(between(d_l, d_m2, d_m) == 0)    break;
+	        I_2 = min(fabs(d_l - d_m2), fabs(d_m - d_m2));                                /*Lの右端が出る*/
+	    }
+	    BLUE = 0;
+	}
+    IB = min(I_1, I_2);
+
+
+    I = IR + IG + IB;
+
+    if(image == 1) return min(IR * IR + IG * IG + IB * IB, 16 * 16);
+    else if(image == 2) return min(IR * IR + IG * IG + IB * IB, 16 * 16);
+    else if(image == 3) return min(I, 16 * 3);
+
+    //I = min(I, 20);
+    //I *= I;
+    //return I * I;                                   /*Dを2乗する*/
+    //return C_D * (I);
+
+}
+
+
 
 double energy(Graph *G, int *label, int *I, double T, int lambda) {
     int i;

@@ -1,0 +1,29 @@
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_1.bmp
+label_size: 15
+lambda: 1
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 23615.000000
+Energy 23056.000000
+Energy 23055.000000
+Energy 23055.000000
+Energy (after): 23055.000000
+Run time[7.36]
+Error rate : 9.141710
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_2_1.bmp
+label_size: 15
+lambda: 2
+T: 1.00
+height 288, width 384
+Energy (before): 139094.000000
+Energy 28681.000000
+Energy 27405.000000
+Energy 27405.000000
+Energy (after): 27405.000000
+Run time[7.49]
+Error rate : 9.472656

@@ -1,0 +1,48 @@
+called: gcc
+	/home/zhuravlik/Dropbox/Univ/B4_prog/alpha-expan-str
+	gcc
+	-c
+	graph.c
+	-Wall
+	-lm
+
+called: gcc
+	/home/zhuravlik/Dropbox/Univ/B4_prog/alpha-expan-str
+	gcc
+	-c
+	bmp.c
+	-Wall
+	-lm
+
+called: gcc
+	/home/zhuravlik/Dropbox/Univ/B4_prog/alpha-expan-str
+	gcc
+	-c
+	ford_fulkerson.c
+	-Wall
+	-lm
+
+called: gcc
+	/home/zhuravlik/Dropbox/Univ/B4_prog/alpha-expan-str
+	gcc
+	-c
+	queue_stack.c
+	-Wall
+	-lm
+
+called: gcc
+	/home/zhuravlik/Dropbox/Univ/B4_prog/alpha-expan-str
+	gcc
+	-c
+	a_edrv.c
+	-Wall
+	-lm
+
+called: gcc
+	/home/zhuravlik/Dropbox/Univ/B4_prog/alpha-expan-str
+	gcc
+	-c
+	a-expan.c
+	-Wall
+	-lm
+
