@@ -20,3 +20,5 @@ double data(int i, int label, Image image);
 void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image image);
 void set_all_edge(Graph *G, int height, int width);
 double err_rate(img output, img truth, int scale);
+
+void label2Bmp(int *label, Image image, int scale, char output_file[]);

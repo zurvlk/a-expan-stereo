@@ -272,7 +272,7 @@ double energy(Graph *G, int *label,  double T, int lambda, Image image) {
     double energy = 0;
     //* Dterm
     for (i = 1; i <= G->n - 2; i++) {
-        energy += data(i, label[i], image.width, image.left, image.right);
+        energy += data(i, label[i], image);
         // energy += data(I_left[i], label[i]);
     }
     // */
@@ -283,42 +283,43 @@ double energy(Graph *G, int *label,  double T, int lambda, Image image) {
     return energy;
 }
 
-int update_labels(Graph *G, int *label, int alpha, double T, int lambda, int *t, Image image) {
-    int i, res;
-    int *temp;
-    double prev_energy, new_energy;
-    if ((temp = (int *) malloc(sizeof(int) * (G->n - 1))) == NULL) {
-        fprintf(stderr, "update_labels(): ERROR [temp = malloc()]\n");
-        exit (EXIT_FAILURE);
-    }
-    // alpha-expansion
-    for (i = 1; i <= G->n - 2; i++) {
-        if (t[i] == 1) temp[i] = alpha;
-        else temp[i] = label[i];
-    }
+// int update_labels(Graph *G, int *label, int alpha, int width, double T, int lambda, int *t, int *I_left, int *I_right) {
+//     int i, res;
+//     int *temp;
+//     double prev_energy, new_energy;
+//     if ((temp = (int *) malloc(sizeof(int) * (G->n - 1))) == NULL) {
+//         fprintf(stderr, "update_labels(): ERROR [temp = malloc()]\n");
+//         exit (EXIT_FAILURE);
+//     }
+//     // alpha-expansion
+//     for (i = 1; i <= G->n - 2; i++) {
+//         if (t[i] == 1) temp[i] = alpha;
+//         else temp[i] = label[i];
+//     }
 
-    // binary
-    // for (i = 1; i <= G->n - 2; i++) {
-    //     temp[i] = t[i];
-    // }
+//     // binary
+//     // for (i = 1; i <= G->n - 2; i++) {
+//     //     temp[i] = t[i];
+//     // }
 
-    prev_energy = energy(G, label, T, lambda, image);
-    new_energy = energy(G, temp,  T, lambda, image);
+//     prev_energy = energy(G, label, T, lambda, image);
+//     new_energy = energy(G, temp,  T, lambda,image);
 
-    if (new_energy < prev_energy) {
-        for (i = 1; i <= G->n - 2; i++) label[i] = temp[i];
-        printf("Energy %lf ---> %lf\n", prev_energy, new_energy);
-        res = 1;
-    } else if (prev_energy == new_energy) {
-        res = 0;
-    } else {
-        fprintf(stderr, "【 WARNING 】 energy(G, newLabel, I) > energy(G, currentLabel, I)\n");
-        printf("【 WARNING 】 Energy %lf ---> %lf\n", prev_energy, new_energy);
-        res = -1;
-    }
-    free(temp);
-    return res;
-}
+//     if (new_energy < prev_energy) {
+//         for (i = 1; i <= G->n - 2; i++) label[i] = temp[i];
+//         printf("Energy %lf ---> %lf\n", prev_energy, new_energy);
+//         res = 1;
+//     } else if (prev_energy == new_energy) {
+//         res = 0;
+//     } else {
+//         fprintf(stderr, "【 WARNING 】 energy(G, newLabel, I) > energy(G, currentLabel, I)\n");
+//         printf("【 WARNING 】 Energy %lf ---> %lf\n", prev_energy, new_energy);
+//         res = -1;
+//     }
+//     free(temp);
+//     return res;
+// }
+
 void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image image) {
     int i, s2i_begin, i2t_begin, grids_node;
     double A, B, C, D, temp;
@@ -380,6 +381,18 @@ void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image i
         G->capa[i + grids_node] -= temp;
     }
     return;
+}
+
+void label2Bmp(int *label, Image image, int scale, char output_file[]) {
+    int i, j;
+    for (i = 0; i <  image.height; i++) {
+        for (j = 0; j < image.width; j++) {
+            image.output.data[i][j].r = label[i * image.width + j + 1] * scale;
+            image.output.data[i][j].g = image.output.data[i][j].r;
+            image.output.data[i][j].b = image.output.data[i][j].r;
+        }
+    }
+    WriteBmp(output_file, &(image.output));
 }
 
 void set_all_edge(Graph *G, int height, int width) {
@@ -446,17 +459,4 @@ double err_rate(img output, img truth, int scale) {
 
     err = 100 * error_count / (double)(truth.height * truth.width);
     return err;
-}
-
-void label2Bmp(int *label, Image image, int scale, char filename[]) {
-    int i, j;
-    
-    for (i = 0; i <  image.height; i++) {
-        for (j = 0; j < image.width; j++) {
-            image.output.data[i][j].r = label[i * image.width + j + 1] * scale;
-            image.output.data[i][j].g = image.output.data[i][j].r;
-            image.output.data[i][j].b = image.output.data[i][j].r;
-        }
-    }
-    WriteBmp(filename, &image.output);
 }

@@ -62,6 +62,7 @@ int main(int argc, char *argv[]) {
     printf("T: %.2f\n", T);
     readStrBmp(&image, argv[1], scale);
 
+
     grids_node = image.height * image.width;
     node = grids_node + 2;
     edge = (image.height - 1) * image.width + image.height * (image.width - 1) + 2 * grids_node;
@@ -70,6 +71,7 @@ int main(int argc, char *argv[]) {
     newGraph(&G, node, edge);
     set_all_edge(&G, image.height, image.width);
     initAdjList(&G);
+ 
 
     if ((f = (double *) malloc(sizeof(double) * (G.m + 1))) == NULL) {
         fprintf(stderr, "main(): ERROR [f = malloc()]\n");
