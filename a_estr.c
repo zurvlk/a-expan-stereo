@@ -145,7 +145,7 @@ double Dt(int x, Image *image, int i, int j) {
 	    }
 	    flag = 0;
 	}
-    I = fmin(I_1, I_2);
+    I = fmin(I_1 / (double)image->scale, I_2 / (double)image->scale);
     I = fmin(I, 20);
     return I;
     //I *= I; 
@@ -278,28 +278,28 @@ void set_all_edge(Graph *G, int height, int width) {
     return;
 }
 
-double err_rate(img output, img truth, int scale) {
+double err_rate(img output, Image image) {
     int i, error_count = 0;
     double err;
-    if (truth.data[0][0].r) {
-        for(i = 1; i <= (output.height) * (output.width); i++) {   
-            if (abs(output.data[(i - 1) / output.width][(i - 1) % output.width].r - truth.data[(i - 1) / truth.width][(i - 1) % truth.width].r ) 
-                >= scale + 1) {
+    if (image.truth.data[0][0].r) {
+        for(i = 1; i <= (image.output.height) * (image.output.width); i++) {
+            if (abs(image.output.data[(i - 1) / image.output.width][(i - 1) % image.output.width].r - image.truth.data[(i - 1) / image.truth.width][(i - 1) % image.truth.width].r )
+                >= image.scale + 1) {
                 error_count++;
-            }                            
+            }
         }
     } else {
-        for(i = 1; i <= (output.height) * (output.width); i++) {
-            if ((i - 1) / output.width >= scale && (i - 1) % output.width >= scale &&
-                (i - 1) / output.width <= output.height - scale && (i - 1) % output.width <= output.width - scale) {
-                if (abs(output.data[(i - 1) / output.width][(i - 1) % output.width].r - truth.data[(i - 1) / truth.width][(i - 1) % truth.width].r ) 
-                    >= scale + 1) {
+        for(i = 1; i <= (image.output.height) * (image.output.width); i++) {
+            if ((i - 1) / image.output.width >= image.scale && (i - 1) % image.output.width >= image.scale &&
+                (i - 1) / image.output.width <= image.output.height - image.scale && (i - 1) % image.output.width <= image.output.width - image.scale) {
+                if (abs(image.output.data[(i - 1) / image.output.width][(i - 1) % image.output.width].r - image.truth.data[(i - 1) / image.truth.width][(i - 1) % image.truth.width].r )
+                    >= image.scale + 1) {
                     error_count++;
                 }
-            }                            
+            }
         }
     }
 
-    err = 100 * error_count / (double)(truth.height * truth.width);
+    err = 100 * error_count / (double)(image.height * image.width);
     return err;
 }

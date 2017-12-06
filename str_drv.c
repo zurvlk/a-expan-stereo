@@ -172,7 +172,7 @@ int main(int argc, char *argv[]) {
         ReadBmp(output_file, &(image.output));
         // Gray(&truth, &truth);
         Gray(&(image.output), &(image.output));
-        error = err_rate((image.output), image.truth, scale);
+        error = err_rate((image.output), image);
         printf("Error rate : %lf\n", error);
     }
     delGraph(&G);
