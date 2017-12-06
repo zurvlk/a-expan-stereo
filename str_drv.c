@@ -15,14 +15,14 @@
 int main(int argc, char *argv[]) {
     long int i, j, node, edge, grids_node;
     int scale = 16, alpha, label_size, label_max, last;
-    int *I_left, *I_right, *t, *label;
+    int *t, *label;
     int lambda = 1;
     // I->入力画像の輝度, t->2値変数, label->ラベル付け
     double flag, temp, error, T = 9;
     double *f;
     char output_file[100];
     clock_t start;
-    img left, right, truth, output;
+    Image image;
     Graph G;
 
     char imgleft[100];
@@ -61,60 +61,22 @@ int main(int argc, char *argv[]) {
 
     if (argc == 2) strcpy(output_file, "/dev/null");
     else strcpy(output_file, argv[2]);
+    grids_node = readStrBmp(&image, argv[1], scale);
 
-   printf("----------------------------------------------\n");
+    printf("----------------------------------------------\n");
     printf("input_file: %s\n", argv[1]);
     printf("output_file: %s\n", output_file);
     printf("label_size: %d\n", label_size);
     printf("lambda: %d\n", lambda);
     printf("T: %.2f\n", T);
 
-    strcpy(imgleft, argv[1]);
-    strcpy(imgright, argv[1]);
-    strcpy(imgtruth, argv[1]);
-
-    strcat(imgleft, "left.bmp");
-    strcat(imgright, "right.bmp");
-    strcat(imgtruth, "truth.bmp");
-
-    ReadBmp(imgleft, &left);
-    ReadBmp(imgright, &right);
-    ReadBmp(imgtruth, &truth);
-    ReadBmp(imgtruth, &output);
-
-    Gray(&left, &left);
-    Gray(&right, &right);
-    Gray(&truth, &truth);
-
-    grids_node = left.height * left.width;
-
-    if ((I_left = (int *)malloc(sizeof(int) * (grids_node + 1))) == NULL) {
-        fprintf(stderr, "Error!:malloc[main()->I_left]\n");
-        exit(EXIT_FAILURE);
-    }
-    if ((I_right = (int *)malloc(sizeof(int) * (grids_node + 1))) == NULL) {
-        fprintf(stderr, "Error!:malloc[main()->I_right]\n");
-        exit(EXIT_FAILURE);
-    }
-
-    printf("height %ld, width %ld\n", left.height, left.width);
-    for (i = 0; i <  left.height; i++) {
-        for (j = 0; j < left.width; j++) {
-            I_left[i * left.width + j + 1] = left.data[i][j].r / scale;
-        }
-    }
-    for (i = 0; i <  right.height; i++) {
-        for (j = 0; j < right.width; j++) {
-            I_right[i * right.width + j + 1] = right.data[i][j].r / scale;
-        }
-    }
 
     node = grids_node + 2;
-    edge = (left.height - 1) * left.width + left.height * (left.width - 1) + 2 * grids_node;
+    edge = (image.height - 1) * image.width + image.height * (image.width - 1) + 2 * grids_node;
 
     // グラフ初期設定
     newGraph(&G, node, edge);
-    set_all_edge(&G, left.height, left.width);
+    set_all_edge(&G, image.height, image.width);
     initAdjList(&G);
 
     if ((f = (double *) malloc(sizeof(double) * (G.m + 1))) == NULL) {
@@ -131,13 +93,13 @@ int main(int argc, char *argv[]) {
     }
     // 輝度から初期ラベル設定
     for (i = 1; i <= G.n - 2; i++) label[i] = 0;
-    printf("Energy (before): %lf\n", energy(&G, label, T, lambda, left.width, I_left, I_right));
+    printf("Energy (before): %lf\n", energy(&G, label, T, lambda, image.width, image.left, image.right));
 
     start = clock();
     last = label_size;
     flag = 1;
     while (flag > 0) {
-        temp = energy(&G, label, T, lambda, left.width, I_left, I_right);
+        temp = energy(&G, label, T, lambda, image.width, image.left, image.right);
         for (alpha = 0; alpha <= label_size; alpha++) {
             if(last == alpha) break;
             for (i = 0; i <= G.m + 1; i++) {
@@ -146,7 +108,7 @@ int main(int argc, char *argv[]) {
             }
 
             // capacity設定
-            set_capacity(&G, label, left.width, alpha, T, lambda, I_left, I_right);
+            set_capacity(&G, label, image.width, alpha, T, lambda, image.left, image.right);
             // capacity(&G, label, I, alpha);
 
 #if _OUTPUT_INFO_
@@ -173,21 +135,21 @@ int main(int argc, char *argv[]) {
 #if _OUTPUT_PROGRESS_
             for (i = 0; i <  image.height; i++) {
                 for (j = 0; j < image.width; j++) {
-                    output.data[i][j].r = label[i * image.width + j + 1] * scale;
-                    output.data[i][j].g = output.data[i][j].r;
-                    output.data[i][j].b = output.data[i][j].r;
+                    image.output.data[i][j].r = label[i * image.width + j + 1] * scale;
+                    image.output.data[i][j].g = image.output.data[i][j].r;
+                    image.output.data[i][j].b = image.output.data[i][j].r;
                 }
             }
             sprintf(pf, "output/image_%04d.bmp", k);
-            WriteBmp(pf, &output);
+            WriteBmp(pf, &(image.output));
             k++;
 #endif
         }
-        flag = temp - energy(&G, label, T, lambda, left.width, I_left, I_right);
-        printf("Energy %lf\n", energy(&G, label, T, lambda, left.width, I_left, I_right));
+        flag = temp - energy(&G, label, T, lambda, image.width, image.left, image.right);
+        printf("Energy %lf\n", energy(&G, label, T, lambda, image.width, image.left, image.right));
     }
 
-    printf("Energy (after): %lf\n", energy(&G, label, T, lambda, left.width, I_left, I_right));
+    printf("Energy (after): %lf\n", energy(&G, label, T, lambda, image.width, image.left, image.right));
     printf("Run time[%.2lf]\n", (double) (clock() - start) / CLOCKS_PER_SEC);
 
 #if _OUTPUT_GRAPH_
@@ -196,14 +158,14 @@ int main(int argc, char *argv[]) {
 #endif
 
     // output to bitmap file
-    for (i = 0; i <  left.height; i++) {
-        for (j = 0; j < left.width; j++) {
-            output.data[i][j].r = label[i * left.width + j + 1] * scale;
-            output.data[i][j].g = output.data[i][j].r;
-            output.data[i][j].b = output.data[i][j].r;
+    for (i = 0; i <  image.height; i++) {
+        for (j = 0; j < image.width; j++) {
+            image.output.data[i][j].r = label[i * image.width + j + 1] * scale;
+            image.output.data[i][j].g = image.output.data[i][j].r;
+            image.output.data[i][j].b = image.output.data[i][j].r;
         }
     }
-    WriteBmp(output_file, &output);
+    WriteBmp(output_file, &(image.output));
 
 #if _OUTPUT_PROGRESS_
     if (system("cd output && yes |./mkmovie.sh") == -1) {
@@ -212,15 +174,15 @@ int main(int argc, char *argv[]) {
 #endif
 
     if (strcmp(output_file, "/dev/null") != 0){
-        ReadBmp(output_file, &output);
+        ReadBmp(output_file, &(image.output));
         // Gray(&truth, &truth);
-        Gray(&output, &output);
-        error = err_rate(output, truth, scale);
+        Gray(&(image.output), &(image.output));
+        error = err_rate((image.output), image.truth, scale);
         printf("Error rate : %lf\n", error);
     }
     delGraph(&G);
-    free(I_left);
-    free(I_right);
+    free(image.left);
+    free(image.right);
     free(f);
     free(t);
     free(label);

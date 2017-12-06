@@ -1,6 +1,20 @@
 #include "graph.h"
 #include "bmp.h"
 
+typedef struct __INPUT_BITMAPS__ {
+    img raw_left;
+    img raw_right;
+    img truth;
+    img output;
+    int *left;
+    int *right;
+    int width;
+    int height;
+}Image;
+
+void label2Bmp(int *label, Image image, int scale, char filename[]);
+double readStrBmp(Image *image, char filename[], int scale);
+
 double energy(Graph *G, int *label,  double T, int lambda, int width, int *I_left, int *I_right);
 double pairwise(double i, double j, double T, int lambda);
 double data(int i, int label, int width, int *I_left, int *I_right);

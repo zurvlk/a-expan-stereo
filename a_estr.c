@@ -5,7 +5,58 @@
 #include <stdio.h>
 #include <float.h>
 #include <math.h>
+#include <string.h>
 #define INF DBL_MAX
+
+double readStrBmp(Image *image, char filename[], int scale) {
+    int i, j, grids_node;
+    char imgleft[100];
+    char imgright[100];
+    char imgtruth[100];
+
+    strcpy(imgleft, filename);
+    strcpy(imgright, filename);
+    strcpy(imgtruth, filename);
+
+    strcat(imgleft, "left.bmp");
+    strcat(imgright, "right.bmp");
+    strcat(imgtruth, "truth.bmp");
+
+    ReadBmp(imgleft, &(image->raw_left));
+    ReadBmp(imgright, &(image->raw_right));
+    ReadBmp(imgtruth, &(image->truth));
+    ReadBmp(imgtruth, &(image->output));
+
+    image->width = image->raw_left.width;
+    image->height = image->raw_left.height;
+    grids_node = image->height * image->width;
+
+    Gray(&(image->raw_left), &(image->raw_left));
+    Gray(&(image->raw_right), &(image->raw_right));
+    Gray(&(image->truth), &(image->truth));
+
+
+    if ((image->left = (int *)malloc(sizeof(int) * (grids_node + 1))) == NULL) {
+        fprintf(stderr, "Error!:malloc[main()->image.left]\n");
+        exit(EXIT_FAILURE);
+    }
+    if ((image->right = (int *)malloc(sizeof(int) * (grids_node + 1))) == NULL) {
+        fprintf(stderr, "Error!:malloc[main()->image.right]\n");
+        exit(EXIT_FAILURE);
+    }
+
+    for (i = 0; i <  image->height; i++) {
+        for (j = 0; j < image->width; j++) {
+            image->left[i * image->width + j + 1] = image->raw_left.data[i][j].r / scale;
+        }
+    }
+    for (i = 0; i <  image->height; i++) {
+        for (j = 0; j < image->width; j++) {
+            image->right[i * image->width + j + 1] = image->raw_right.data[i][j].r / scale;
+        }
+    }
+    return image->height * image->width;
+}
 
 double dabs(double a, double b) {
     return a - b > 0 ? a - b : b - a;
