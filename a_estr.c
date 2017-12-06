@@ -93,52 +93,53 @@ double Dt(int x, Image *image, int i, int j) {
     double d_m, d_l, d_r, d_m2, d_l2, d_r2;
     double  I, I_1 = 0, I_2 = 0;
 
-	if(x < 0 || x >= image->label_max || j - x < 0) return INF;
+	if(x < 0 || x > image->label_max ) return INF;
+    if (j - x < 0) return 10000;
 
     int flag = 1;
     while(flag){
     
-	    d_m = image->raw_left.data[i][j].r / image->scale;
-	    d_m2 =  image->raw_right.data[i][j - x].r / image->scale;
+	    d_m = image->raw_left.data[i][j].r;
+	    d_m2 =  image->raw_right.data[i][j - x].r;
 
 	    if((j - x - 1 >= 0) && (j - x + 1 <= image->raw_right.width - 1)){
 
-	        d_l2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x - 1].r) / image->scale * 2.0;
-            d_r2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x + 1].r) / image->scale * 2.0;
+	        d_l2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x - 1].r) / 2.0;
+            d_r2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x + 1].r) / 2.0;
 	        if(between(d_l2, d_m, d_m2) == 0)    break;
 	        if(between(d_r2, d_m, d_m2) == 0)    break;
 	        I_1 = fmin3(fabs(d_m - d_l2), fabs(d_m - d_m2), fabs(d_m - d_r2));              /*特に制約なし*/
 
 	    }else if(j - x - 1 < 0){
 
-	        d_r2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x + 1].r) / image->scale * 2.0;
+	        d_r2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x + 1].r) / 2.0;
 	        if(between(d_m2, d_m, d_r2) == 0)    break;
 	        I_1 = fmin(fabs(d_m - d_m2), fabs(d_m - d_r2));                                /*Rの左端が出る*/
 
 	    }else{
 
-	        d_l2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x - 1].r) / image->scale * 2.0;
+	        d_l2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x - 1].r) / 2.0;
 	        if(between(d_l2, d_m, d_m2) == 0)    break;
 	        I_1 = fmin(fabs(d_m - d_l2), fabs(d_m - d_m2));                                /*Rの右端が出る*/
 	    }
 
 	    if((j != 0) && (j != image->raw_left.width - 1)){
 
-	        d_l = (image->raw_left.data[i][j].r + image->raw_left.data[i][j - 1].r) / image->scale * 2.0;
-	        d_r = (image->raw_left.data[i][j].r + image->raw_left.data[i][j + 1].r) / image->scale * 2.0;
+	        d_l = (image->raw_left.data[i][j].r + image->raw_left.data[i][j - 1].r) / 2.0;
+	        d_r = (image->raw_left.data[i][j].r + image->raw_left.data[i][j + 1].r) / 2.0;
 	        if(between(d_l, d_m2, d_m) == 0)    break;
 	        if(between(d_r, d_m2, d_m) == 0)    break;
 	        I_2 = fmin3(fabs(d_l - d_m2), fabs(d_m - d_m2), fabs(d_r - d_m2));              /*特に制約なし*/
 
 	    }else if(j == 0){ 
 
-	        d_r = (image->raw_left.data[i][j].r + image->raw_left.data[i][j + 1].r) / image->scale * 2.0;
+	        d_r = (image->raw_left.data[i][j].r + image->raw_left.data[i][j + 1].r) / 2.0;
 	        if(between(d_m, d_m2, d_r) == 0)    break;
 	        I_2 = fmin(fabs(d_m - d_m2), fabs(d_r - d_m2));                                /*Lの左端が出る*/
 
 	    }else{
 
-	        d_l = (image->raw_left.data[i][j].r + image->raw_left.data[i][j - 1].r) / image->scale * 2.0;
+	        d_l = (image->raw_left.data[i][j].r + image->raw_left.data[i][j - 1].r) / 2.0;
 	        if(between(d_l, d_m2, d_m) == 0)    break;
 	        I_2 = fmin(fabs(d_l - d_m2), fabs(d_m - d_m2));                                /*Lの右端が出る*/
 	    }
@@ -156,7 +157,7 @@ double Dt(int x, Image *image, int i, int j) {
 
 
 double energy(Graph *G, int *label,  double T, int lambda, Image image) {
-    int i, j;
+
     double energy = 0;
     //* Dterm
     // for (i = 1; i <= G->n - 2; i++) {
@@ -165,13 +166,11 @@ double energy(Graph *G, int *label,  double T, int lambda, Image image) {
     // }
     // */
 
-    for (i = 0; i < image.height; i++) {
-        for (j = 0; j < image.width; j++) {
-            energy += Dt(label[i * image.height + j], &image, i, j);
-        }
+    for(int i = 1; i < G->n - 1; i++){
+        energy += Dt(label[i], &image, i / image.width, i % image.width);
     }
     // Vterm
-    for (i = 1; i <= G->m - 2 * (G->n - 2); i++) {
+    for (int i = 1; i <= G->m - 2 * (G->n - 2); i++) {
         energy += pairwise(label[G->tail[i]], label[G->head[i]], T, lambda);
     }
     return energy;
@@ -189,7 +188,7 @@ void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image i
 
     for (i = 0; i <= G->m + 1; i++) G->capa[i] = 0;
     for (i = s2i_begin; i < i2t_begin; i++) {
-        //labelがalphaでない->capacity設定
+        //labelがalphaでない->capacity設定s2i
         //labelがalpha->枝を削除
         if (label[G->head[i]] == alpha) {
             deleteAdjEdge(G, i);
@@ -198,15 +197,14 @@ void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image i
     }
 
     // set Dterm
-     for(i = 1; i < G->n - 1; i++){
-        if(data(i, label[i], image.width, image.left, image.right) > data(i, alpha, image.width, image.left, image.right)){
-            G->capa[s2i_begin - 1 + i] +=  (data(i, label[i], image.width, image.left, image.right) - data(i, alpha, image.width, image.left, image.right));
+    for(i = 1; i < G->n - 1; i++){
+        temp = Dt(label[i], &image, i / image.width, i % image.width) - Dt(alpha, &image, i / image.width, i % image.width);
+        if(temp > 0){
+            G->capa[s2i_begin - 1 + i] +=  temp;
         }else{
-            G->capa[i2t_begin - 1  + i] += (data(i, alpha, image.width, image.left, image.right) - data(i, label[i], image.width, image.left, image.right));
+            G->capa[i2t_begin - 1  + i] -= temp;
         }
-     }
-
-
+    }
     // set Vterm
     for(i = 1; i < s2i_begin; i++) {
         //head,tailが共にalpha->枝を削除
