@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[]) {
     long int i, j, node, edge, grids_node;
-    int scale = 16, alpha, label_size, label_max, last;
+    int scale = 16, alpha, label_size, last;
     int *t, *label;
     int lambda = 1;
     // I->入力画像の輝度, t->2値変数, label->ラベル付け
@@ -24,10 +24,6 @@ int main(int argc, char *argv[]) {
     clock_t start;
     Image image;
     Graph G;
-
-    char imgleft[100];
-    char imgright[100];
-    char imgtruth[100];
 
 #if _OUTPUT_INFO_
     double maxflow;
@@ -54,7 +50,8 @@ int main(int argc, char *argv[]) {
 
 
     label_size = 256 / scale;
-    label_max = label_size - 1;
+    image.scale = scale;
+    image.label_max = label_size - 1;
 
 
     label_size = 255 / scale;
@@ -93,13 +90,13 @@ int main(int argc, char *argv[]) {
     }
     // 輝度から初期ラベル設定
     for (i = 1; i <= G.n - 2; i++) label[i] = 0;
-    printf("Energy (before): %lf\n", energy(&G, label, T, lambda, image.width, image.left, image.right));
+    printf("Energy (before): %lf\n", energy(&G, label, T, lambda, image));
 
     start = clock();
     last = label_size;
     flag = 1;
     while (flag > 0) {
-        temp = energy(&G, label, T, lambda, image.width, image.left, image.right);
+        temp = energy(&G, label, T, lambda, image);
         for (alpha = 0; alpha <= label_size; alpha++) {
             if(last == alpha) break;
             for (i = 0; i <= G.m + 1; i++) {
@@ -108,7 +105,7 @@ int main(int argc, char *argv[]) {
             }
 
             // capacity設定
-            set_capacity(&G, label, image.width, alpha, T, lambda, image.left, image.right);
+            set_capacity(&G, label, alpha, T, lambda, image);
             // capacity(&G, label, I, alpha);
 
 #if _OUTPUT_INFO_
@@ -121,16 +118,14 @@ int main(int argc, char *argv[]) {
             //削除された枝はvoykov_kolmogorov(G, f, t)で再度リストに追加されている
 
             // tを基にラベル更新
-#if _CHK_ENERGY_
-            if(update_labels(&G, alpha, label, t, I)) last = alpha;
-#else
+
             for (i = 1; i <= G.n - 2; i++) {
                 if(t[i] == 1) {
                     label[i] = alpha;
                     last = alpha;
                 }
             }
-#endif
+
 
 #if _OUTPUT_PROGRESS_
             for (i = 0; i <  image.height; i++) {
@@ -145,11 +140,11 @@ int main(int argc, char *argv[]) {
             k++;
 #endif
         }
-        flag = temp - energy(&G, label, T, lambda, image.width, image.left, image.right);
-        printf("Energy %lf\n", energy(&G, label, T, lambda, image.width, image.left, image.right));
+        flag = temp - energy(&G, label, T, lambda, image);
+        printf("Energy %lf\n", temp - flag);
     }
 
-    printf("Energy (after): %lf\n", energy(&G, label, T, lambda, image.width, image.left, image.right));
+    printf("Energy (after): %lf\n", energy(&G, label, T, lambda, image));
     printf("Run time[%.2lf]\n", (double) (clock() - start) / CLOCKS_PER_SEC);
 
 #if _OUTPUT_GRAPH_

@@ -55,7 +55,7 @@ double readStrBmp(Image *image, char filename[], int scale) {
             image->right[i * image->width + j + 1] = image->raw_right.data[i][j].r / scale;
         }
     }
-    return image->height * image->width;
+    return grids_node;
 }
 
 double dabs(double a, double b) {
@@ -63,6 +63,15 @@ double dabs(double a, double b) {
 }
 double fmin(double i, double j) {
     return i < j  ? i : j;
+}
+
+double fmin3(double i, double j, double k) {
+    return fmin(fmin(i, j), k);
+}
+
+double between(double a, double b, double c){
+    if((a <= b && b <= c) || (c <= b && b <= a))    return 0;
+    else return 1;
 }
 
 double pairwise(double i, double j, double T, int lambda) {
@@ -80,15 +89,87 @@ double data(int i, int label, int width, int *I_left, int *I_right) {
     return sqrt(data);
 }
 
-double energy(Graph *G, int *label,  double T, int lambda, int width, int *I_left, int *I_right) {
-    int i;
+double Dt(int x, Image *image, int i, int j) {
+    double d_m, d_l, d_r, d_m2, d_l2, d_r2;
+    double  I, I_1 = 0, I_2 = 0;
+
+	if(x < 0 || x >= image->label_max || j - x < 0) return INF;
+
+    int flag = 1;
+    while(flag){
+    
+	    d_m = image->raw_left.data[i][j].r / image->scale;
+	    d_m2 =  image->raw_right.data[i][j - x].r / image->scale;
+
+	    if((j - x - 1 >= 0) && (j - x + 1 <= image->raw_right.width - 1)){
+
+	        d_l2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x - 1].r) / image->scale * 2.0;
+            d_r2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x + 1].r) / image->scale * 2.0;
+	        if(between(d_l2, d_m, d_m2) == 0)    break;
+	        if(between(d_r2, d_m, d_m2) == 0)    break;
+	        I_1 = fmin3(fabs(d_m - d_l2), fabs(d_m - d_m2), fabs(d_m - d_r2));              /*特に制約なし*/
+
+	    }else if(j - x - 1 < 0){
+
+	        d_r2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x + 1].r) / image->scale * 2.0;
+	        if(between(d_m2, d_m, d_r2) == 0)    break;
+	        I_1 = fmin(fabs(d_m - d_m2), fabs(d_m - d_r2));                                /*Rの左端が出る*/
+
+	    }else{
+
+	        d_l2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x - 1].r) / image->scale * 2.0;
+	        if(between(d_l2, d_m, d_m2) == 0)    break;
+	        I_1 = fmin(fabs(d_m - d_l2), fabs(d_m - d_m2));                                /*Rの右端が出る*/
+	    }
+
+	    if((j != 0) && (j != image->raw_left.width - 1)){
+
+	        d_l = (image->raw_left.data[i][j].r + image->raw_left.data[i][j - 1].r) / image->scale * 2.0;
+	        d_r = (image->raw_left.data[i][j].r + image->raw_left.data[i][j + 1].r) / image->scale * 2.0;
+	        if(between(d_l, d_m2, d_m) == 0)    break;
+	        if(between(d_r, d_m2, d_m) == 0)    break;
+	        I_2 = fmin3(fabs(d_l - d_m2), fabs(d_m - d_m2), fabs(d_r - d_m2));              /*特に制約なし*/
+
+	    }else if(j == 0){ 
+
+	        d_r = (image->raw_left.data[i][j].r + image->raw_left.data[i][j + 1].r) / image->scale * 2.0;
+	        if(between(d_m, d_m2, d_r) == 0)    break;
+	        I_2 = fmin(fabs(d_m - d_m2), fabs(d_r - d_m2));                                /*Lの左端が出る*/
+
+	    }else{
+
+	        d_l = (image->raw_left.data[i][j].r + image->raw_left.data[i][j - 1].r) / image->scale * 2.0;
+	        if(between(d_l, d_m2, d_m) == 0)    break;
+	        I_2 = fmin(fabs(d_l - d_m2), fabs(d_m - d_m2));                                /*Lの右端が出る*/
+	    }
+	    flag = 0;
+	}
+    I = fmin(I_1, I_2);
+    I = fmin(I, 20);
+    return I;
+    //I *= I; 
+    //return I * I;                                   /*Dを2乗する*/
+    //return C_D * (I);
+
+}
+
+
+
+double energy(Graph *G, int *label,  double T, int lambda, Image image) {
+    int i, j;
     double energy = 0;
     //* Dterm
-    for (i = 1; i <= G->n - 2; i++) {
-        energy += data(i, label[i], width, I_left, I_right);
-        // energy += data(I_left[i], label[i]);
-    }
+    // for (i = 1; i <= G->n - 2; i++) {
+    //     energy += data(i, label[i], image.width, image.left, image.right);
+    //     // energy += data(I_left[i], label[i]);
+    // }
     // */
+
+    for (i = 0; i < image.height; i++) {
+        for (j = 0; j < image.width; j++) {
+            energy += Dt(label[i * image.height + j], &image, i, j);
+        }
+    }
     // Vterm
     for (i = 1; i <= G->m - 2 * (G->n - 2); i++) {
         energy += pairwise(label[G->tail[i]], label[G->head[i]], T, lambda);
@@ -96,43 +177,7 @@ double energy(Graph *G, int *label,  double T, int lambda, int width, int *I_lef
     return energy;
 }
 
-int update_labels(Graph *G, int *label, int alpha, int width, double T, int lambda, int *t, int *I_left, int *I_right) {
-    int i, res;
-    int *temp;
-    double prev_energy, new_energy;
-    if ((temp = (int *) malloc(sizeof(int) * (G->n - 1))) == NULL) {
-        fprintf(stderr, "update_labels(): ERROR [temp = malloc()]\n");
-        exit (EXIT_FAILURE);
-    }
-    // alpha-expansion
-    for (i = 1; i <= G->n - 2; i++) {
-        if (t[i] == 1) temp[i] = alpha;
-        else temp[i] = label[i];
-    }
-
-    // binary
-    // for (i = 1; i <= G->n - 2; i++) {
-    //     temp[i] = t[i];
-    // }
-
-    prev_energy = energy(G, label, width, T, lambda, I_left, I_right);
-    new_energy = energy(G, temp, width, T, lambda, I_left, I_right);
-
-    if (new_energy < prev_energy) {
-        for (i = 1; i <= G->n - 2; i++) label[i] = temp[i];
-        printf("Energy %lf ---> %lf\n", prev_energy, new_energy);
-        res = 1;
-    } else if (prev_energy == new_energy) {
-        res = 0;
-    } else {
-        fprintf(stderr, "【 WARNING 】 energy(G, newLabel, I) > energy(G, currentLabel, I)\n");
-        printf("【 WARNING 】 Energy %lf ---> %lf\n", prev_energy, new_energy);
-        res = -1;
-    }
-    free(temp);
-    return res;
-}
-void set_capacity(Graph *G, int *label, int width, int alpha, double T, int lambda, int *I_left, int *I_right) {
+void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image image) {
     int i, s2i_begin, i2t_begin, grids_node;
     double A, B, C, D, temp;
     //　source->各ノード　を示す枝の開始位置
@@ -154,10 +199,10 @@ void set_capacity(Graph *G, int *label, int width, int alpha, double T, int lamb
 
     // set Dterm
      for(i = 1; i < G->n - 1; i++){
-        if(data(i, label[i], width, I_left, I_right) > data(i, alpha, width, I_left, I_right)){
-            G->capa[s2i_begin - 1 + i] +=  (data(i, label[i], width, I_left, I_right) - data(i, alpha, width, I_left, I_right));
+        if(data(i, label[i], image.width, image.left, image.right) > data(i, alpha, image.width, image.left, image.right)){
+            G->capa[s2i_begin - 1 + i] +=  (data(i, label[i], image.width, image.left, image.right) - data(i, alpha, image.width, image.left, image.right));
         }else{
-            G->capa[i2t_begin - 1  + i] += (data(i, alpha, width, I_left, I_right) - data(i, label[i], width, I_left, I_right));
+            G->capa[i2t_begin - 1  + i] += (data(i, alpha, image.width, image.left, image.right) - data(i, label[i], image.width, image.left, image.right));
         }
      }
 
