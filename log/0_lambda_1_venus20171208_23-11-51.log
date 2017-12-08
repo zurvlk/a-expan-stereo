@@ -1,0 +1,88 @@
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_1_1.bmp
+label_size: 31
+lambda: 1
+T: 1.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 22692.875000
+Run time[45.77]
+Error rate : 5.286304
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_1_2.bmp
+label_size: 31
+lambda: 1
+T: 4.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 29051.625000
+Run time[32.00]
+Error rate : 7.284234
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_1_3.bmp
+label_size: 31
+lambda: 1
+T: 9.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 36640.625000
+Run time[34.51]
+Error rate : 9.872339
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_1_4.bmp
+label_size: 31
+lambda: 1
+T: 16.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 44097.437500
+Run time[36.24]
+Error rate : 10.245335
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_1_5.bmp
+label_size: 31
+lambda: 1
+T: 25.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 49643.812500
+Run time[39.41]
+Error rate : 12.861715
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_1_6.bmp
+label_size: 31
+lambda: 1
+T: 36.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 57314.500000
+Run time[47.13]
+Error rate : 19.628569
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_1_7.bmp
+label_size: 31
+lambda: 1
+T: 49.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 63459.687500
+Run time[43.89]
+Error rate : 21.024293
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_1_8.bmp
+label_size: 31
+lambda: 1
+T: 64.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 69164.812500
+Run time[54.92]
+Error rate : 21.221018
