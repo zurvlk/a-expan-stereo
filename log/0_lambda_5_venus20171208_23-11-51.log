@@ -1,0 +1,88 @@
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_5_1.bmp
+label_size: 31
+lambda: 5
+T: 1.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 42059.687500
+Run time[47.44]
+Error rate : 13.450085
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_5_2.bmp
+label_size: 31
+lambda: 5
+T: 4.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 68043.125000
+Run time[37.29]
+Error rate : 16.997750
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_5_3.bmp
+label_size: 31
+lambda: 5
+T: 9.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 96799.500000
+Run time[34.05]
+Error rate : 28.328982
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_5_4.bmp
+label_size: 31
+lambda: 5
+T: 16.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 115004.375000
+Run time[63.73]
+Error rate : 29.605588
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_5_5.bmp
+label_size: 31
+lambda: 5
+T: 25.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 129315.812500
+Run time[34.23]
+Error rate : 41.281539
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_5_6.bmp
+label_size: 31
+lambda: 5
+T: 36.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 129315.812500
+Run time[37.27]
+Error rate : 41.281539
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_5_7.bmp
+label_size: 31
+lambda: 5
+T: 49.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 129315.812500
+Run time[39.10]
+Error rate : 41.281539
+----------------------------------------------
+input_file: input/venus_
+output_file: output/venus_0_5_8.bmp
+label_size: 31
+lambda: 5
+T: 64.00
+Data term: Dt
+Energy (before): 254018.562500
+Energy (after): 129315.812500
+Run time[41.29]
+Error rate : 41.281539
