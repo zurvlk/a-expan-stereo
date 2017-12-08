@@ -1,0 +1,88 @@
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_4_1.bmp
+label_size: 15
+lambda: 4
+T: 1.00
+Data term: normal
+Energy (before): 139094.000000
+Energy (after): 33186.000000
+Run time[6.85]
+Error rate : 11.247649
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_4_2.bmp
+label_size: 15
+lambda: 4
+T: 4.00
+Data term: normal
+Energy (before): 139094.000000
+Energy (after): 49453.000000
+Run time[5.83]
+Error rate : 15.196398
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_4_3.bmp
+label_size: 15
+lambda: 4
+T: 9.00
+Data term: normal
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[5.76]
+Error rate : 18.200231
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_4_4.bmp
+label_size: 15
+lambda: 4
+T: 16.00
+Data term: normal
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[6.06]
+Error rate : 18.200231
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_4_5.bmp
+label_size: 15
+lambda: 4
+T: 25.00
+Data term: normal
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[6.68]
+Error rate : 18.200231
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_4_6.bmp
+label_size: 15
+lambda: 4
+T: 36.00
+Data term: normal
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[7.07]
+Error rate : 18.200231
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_4_7.bmp
+label_size: 15
+lambda: 4
+T: 49.00
+Data term: normal
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[7.42]
+Error rate : 18.200231
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_4_8.bmp
+label_size: 15
+lambda: 4
+T: 64.00
+Data term: normal
+Energy (before): 139094.000000
+Energy (after): 50400.000000
+Run time[7.94]
+Error rate : 18.200231
