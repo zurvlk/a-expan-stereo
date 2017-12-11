@@ -1,0 +1,96 @@
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_7_1.bmp
+label_size: 15
+lambda: 7
+T: 1.00
+Data term: normal
+Energy (before): 139094.000000
+ita: 39
+Energy (after): 40194.000000
+Run time[7.78]
+Error rate : 14.540835
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_7_2.bmp
+label_size: 15
+lambda: 7
+T: 4.00
+Data term: normal
+Energy (before): 139094.000000
+ita: 27
+Energy (after): 62949.000000
+Run time[6.96]
+Error rate : 20.845088
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_7_3.bmp
+label_size: 15
+lambda: 7
+T: 9.00
+Data term: normal
+Energy (before): 139094.000000
+ita: 27
+Energy (after): 63351.000000
+Run time[7.65]
+Error rate : 20.984339
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_7_4.bmp
+label_size: 15
+lambda: 7
+T: 16.00
+Data term: normal
+Energy (before): 139094.000000
+ita: 27
+Energy (after): 63351.000000
+Run time[9.09]
+Error rate : 20.984339
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_7_5.bmp
+label_size: 15
+lambda: 7
+T: 25.00
+Data term: normal
+Energy (before): 139094.000000
+ita: 27
+Energy (after): 63351.000000
+Run time[9.96]
+Error rate : 20.984339
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_7_6.bmp
+label_size: 15
+lambda: 7
+T: 36.00
+Data term: normal
+Energy (before): 139094.000000
+ita: 27
+Energy (after): 63351.000000
+Run time[10.33]
+Error rate : 20.984339
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_7_7.bmp
+label_size: 15
+lambda: 7
+T: 49.00
+Data term: normal
+Energy (before): 139094.000000
+ita: 27
+Energy (after): 63351.000000
+Run time[10.56]
+Error rate : 20.984339
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/tsukuba_1_7_8.bmp
+label_size: 15
+lambda: 7
+T: 64.00
+Data term: normal
+Energy (before): 139094.000000
+ita: 27
+Energy (after): 63351.000000
+Run time[10.61]
+Error rate : 20.984339
