@@ -479,9 +479,9 @@ void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image i
             // temp = data(i, label[i], image.height, image.width, image.left, image.right) - data(i, alpha, image.height, image.width, image.left, image.right);
         }
         if(temp > 0){
-            G->capa[s2i_begin - 1 + i] +=  temp;
+            G->capa[s2i_begin - 1 + i] += temp;
         }else{
-            G->capa[i2t_begin - 1  + i] -= temp;
+            G->capa[i2t_begin - 1 + i] -= temp;
         }
     }
     // set Vterm
@@ -496,13 +496,19 @@ void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image i
             A = fmin(A, B + C - D);
             G->capa[i] = B + C - A - D;
             // source->i
-            G->capa[s2i_begin - 1 + G->tail[i]] += B - D;
+            temp = B - D;
+            if (temp > 0) {
+                G->capa[s2i_begin - 1 + G->tail[i]] += temp;
+            } else {
+                G->capa[i2t_begin - 1 + G->tail[i]] -= temp;
+            }
+            
             // i->sink
             temp = B - A;
             if(temp > 0) {
                 G->capa[i2t_begin - 1 + G->head[i]] += temp;
             } else {
-                G->capa[i2t_begin - 1 + G->head[i]] += temp;
+                G->capa[s2i_begin - 1 + G->head[i]] -= temp;
             }
         } else {
             deleteAdjEdge(G, i);
