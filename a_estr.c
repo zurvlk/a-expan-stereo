@@ -8,6 +8,18 @@
 #include <string.h>
 #define INF DBL_MAX
 
+
+int calheight(int width, int node) {
+	if (node % width) return node / width;
+	else return node / width - 1;
+}
+
+int calwidth(int width, int node) {
+	if (node % width) return node % width - 1;
+	else return width - 1;
+}
+
+
 double readStrBmp(Image *image, char filename[], int scale) {
     int i, j, grids_node;
     char imgleft[100];
@@ -70,25 +82,225 @@ double fmin3(double i, double j, double k) {
 }
 
 double between(double a, double b, double c){
-    if((a <= b && b <= c) || (c <= b && b <= a))    return 0;
+    // if((a <= b && b <= c) || (c <= b && b <= a))    return 0;
+    if (( isgreater(b, a) && isgreater(b, c) ) || ( isless(b, a) && isless(b, c))) return 0;
     else return 1;
 }
 
 double pairwise(double i, double j, double T, int lambda) {
-    return lambda * fmin((i - j) * (i - j), T);
+    return lambda * fmin((i - j) * (i - j), T * T);
 }
 
-double data(int i, int label, int width, int *I_left, int *I_right) {
+
+double data_single(int i, int label, int height, int width, int *I_left, int *I_right) {
     double data = 0;
+    int p_height = calheight(width, i);
+
+    if (p_height == calheight(width, i - label)) {
+        data += (I_left[i] - I_right[i - label]) * (I_left[i] - I_right[i - label]);
+    }else data += INF;
+    return data;
+}
+
+double D_single(int x, img *tmp_l2, img *tmp_r2, int n, int m) {
+    double D_s; 
+    D_s = (tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * (tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+    return D_s;
+}
+
+double Dt_9n(int x, img *tmp_l2, img *tmp_r2, int i, int j, int max_label){
+	double sum = 0;
+	int n, m;
+	
+	// if(x == -1 || x == max_label) return INF;
+    if(x < 0 || x > max_label) return INF;
+	if(j - x < 0) return INF;
+	
+	if(i - 1 < 1){
+		if(j - 1 < 1){
+			for(n = i; n <= i + 1; n++){
+				for(m = j; m <= j + 1; m++){
+                    sum += D_single(x, tmp_l2, tmp_r2, n, m);
+				}
+			}
+		}else if(j + 1 > tmp_l2->width){
+			for(n = i; n <= i + 1; n++){
+				for(m = j - 1 ; m <= j; m++){
+                    sum += D_single(x, tmp_l2, tmp_r2, n, m);
+				}
+			}
+		}else{
+			for(n = i; n <= i + 1; n++){
+				for(m = j - 1; m <= j + 1; m++){
+                    sum += D_single(x, tmp_l2, tmp_r2, n, m);
+				}
+			}
+		}
+	}else if(i + 1 > tmp_l2->height){
+		if(j - 1 < 1){
+			for(n = i - 1; n <= i; n++){
+				for(m = j; m <= j + 1; m++){
+                    sum += D_single(x, tmp_l2, tmp_r2, n, m);
+				}
+			}
+		}else if(j + 1 > tmp_l2->width){
+			for(n = i - 1; n <= i; n++){
+				for(m = j - 1; m <= j; m++){
+                    sum += D_single(x, tmp_l2, tmp_r2, n, m);
+				}
+			}
+		}else {
+			for(n = i - 1; n <= i; n++){
+				for(m = j - 1; m <= j + 1; m++){
+                    sum += D_single(x, tmp_l2, tmp_r2, n, m);
+				}
+			}
+		}
+	}else{
+		if(j - 1 < 1){
+			for(n = i - 1; n <= i + 1; n++){
+				for(m = j; m <= j + 1; m++){
+                    sum += D_single(x, tmp_l2, tmp_r2, n, m);
+				}
+			}
+		}else if (j + 1 > tmp_l2->width){
+			for(n = i - 1; n <= i + 1; n++){
+				for(m = j - 1; m <= j; m++){
+                    sum += D_single(x, tmp_l2, tmp_r2, n, m);
+				}
+			}
+		}else {
+			for(n = i - 1; n <= i + 1; n++){
+				for(m = j - 1; m <= j + 1; m++){
+                    sum += D_single(x, tmp_l2, tmp_r2, n, m);
+				}
+			}
+		}
+	}
+	//sum = sum * sum;
+	return sqrt(sum);
+
+}
+
+double data(int i, int label, int height, int width, int *I_left, int *I_right) {
+    double data = 0;
+    int p_height, p_width;
+
+    p_height = calheight(width, i);
+    p_width = calwidth(width, i);
     // return 1.0 * dabs(label, I_left[i]);
-    //leftの中のものがどこにあるか
-    if ((i - 1) / width == (i - label - 1) / width) {
-        data = (I_left[i] - I_right[i - label]) * (I_left[i] - I_right[i - label]);
-    }else data = INF;
+    // leftの中のものがどこにあるか
+
+    data += data_single(i, label, height, width, I_left, I_right);
+
+    if (p_height == 0) {
+        if (p_width != 0) {
+            data += data_single(i - 1, label, height, width, I_left, I_right);
+            data += data_single(i - 1 + width, label, height, width, I_left, I_right);
+        } else if (p_width != width - 1) {
+            data += data_single(i + 1, label, height, width, I_left, I_right);
+            data += data_single(i + 1 + width, label, height, width, I_left, I_right);
+        }
+        data += data_single(i + width, label, height, width, I_left, I_right);
+    } else if (p_height == height - 1) {
+        if (p_width != 0) {
+            data += data_single(i - 1, label, height, width, I_left, I_right);
+            data += data_single(i - 1 - width, label, height, width, I_left, I_right);
+        } else if (p_width != width - 1) {
+            data += data_single(i + 1, label, height, width, I_left, I_right);
+            data += data_single(i + 1 - width, label, height, width, I_left, I_right);
+        }
+        data += data_single(i - width, label, height, width, I_left, I_right);
+    } else {
+        if (p_width != 0) {
+            data += data_single(i - 1, label, height, width, I_left, I_right);
+            data += data_single(i - 1 - width, label, height, width, I_left, I_right);
+            data += data_single(i - 1 + width, label, height, width, I_left, I_right);
+        } else if (p_width != width - 1) {
+            data += data_single(i + 1, label, height, width, I_left, I_right);
+            data += data_single(i + 1 - width, label, height, width, I_left, I_right);
+            data += data_single(i + 1 + width, label, height, width, I_left, I_right);
+        }
+        data += data_single(i - width, label, height, width, I_left, I_right);
+        data += data_single(i + width, label, height, width, I_left, I_right);
+    }
 
     return sqrt(data);
 }
 
+double D_term(int x, img *tmp_l2, img *tmp_r2, int i, int j, int max_label){
+	double sum = 0;
+	int n, m;
+	
+	// if(x == -1 || x == max_label) return INF;
+    if(x < 0 || x > max_label) return INF;
+	if(j - x < 0) return INF;
+	
+	if(i - 1 < 1){
+		if(j - 1 < 1){
+			for(n = i; n <= i + 1; n++){
+				for(m = j; m <= j + 1; m++){
+					sum += fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+				}
+			}
+		}else if(j + 1 > tmp_l2->width){
+			for(n = i; n <= i + 1; n++){
+				for(m = j - 1 ; m <= j; m++){
+					sum += fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+				}
+			}
+		}else{
+			for(n = i; n <= i + 1; n++){
+				for(m = j - 1; m <= j + 1; m++){
+					sum += fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+				}
+			}
+		}
+	}else if(i + 1 > tmp_l2->height){
+		if(j - 1 < 1){
+			for(n = i - 1; n <= i; n++){
+				for(m = j; m <= j + 1; m++){
+					sum += fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+				}
+			}
+		}else if(j + 1 > tmp_l2->width){
+			for(n = i - 1; n <= i; n++){
+				for(m = j - 1; m <= j; m++){
+					sum += fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+				}
+			}
+		}else {
+			for(n = i - 1; n <= i; n++){
+				for(m = j - 1; m <= j + 1; m++){
+					sum += fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+				}
+			}
+		}
+	}else{
+		if(j - 1 < 1){
+			for(n = i - 1; n <= i + 1; n++){
+				for(m = j; m <= j + 1; m++){
+					sum += fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+				}
+			}
+		}else if (j + 1 > tmp_l2->width){
+			for(n = i - 1; n <= i + 1; n++){
+				for(m = j - 1; m <= j; m++){
+					sum += fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+				}
+			}
+		}else {
+			for(n = i - 1; n <= i + 1; n++){
+				for(m = j - 1; m <= j + 1; m++){
+					sum += fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r) * fabs(tmp_l2->data[n][m].r - tmp_r2->data[n][m - x].r);
+				}
+			}
+		}
+	}
+	//sum = sum * sum;
+	return sqrt(sum);
+
+}
 double Dt(int x, Image *image, int i, int j) {
     double d_m, d_l, d_r, d_m2, d_l2, d_r2;
     double  I, I_1 = 0, I_2 = 0;
@@ -98,10 +310,10 @@ double Dt(int x, Image *image, int i, int j) {
 
     int flag = 1;
     while(flag){
-    
+
 	    d_m = image->raw_left.data[i][j].r;
 	    d_m2 =  image->raw_right.data[i][j - x].r;
-
+        // D_fwd
 	    if((j - x - 1 >= 0) && (j - x + 1 <= image->raw_right.width - 1)){
 
 	        d_l2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x - 1].r) / 2.0;
@@ -123,6 +335,7 @@ double Dt(int x, Image *image, int i, int j) {
 	        I_1 = fmin(fabs(d_m - d_l2), fabs(d_m - d_m2));                                /*Rの右端が出る*/
 	    }
 
+        // D_rev
 	    if((j != 0) && (j != image->raw_left.width - 1)){
 
 	        d_l = (image->raw_left.data[i][j].r + image->raw_left.data[i][j - 1].r) / 2.0;
@@ -131,7 +344,7 @@ double Dt(int x, Image *image, int i, int j) {
 	        if(between(d_r, d_m2, d_m) == 0)    break;
 	        I_2 = fmin3(fabs(d_l - d_m2), fabs(d_m - d_m2), fabs(d_r - d_m2));              /*特に制約なし*/
 
-	    }else if(j == 0){ 
+	    }else if(j == 0){
 
 	        d_r = (image->raw_left.data[i][j].r + image->raw_left.data[i][j + 1].r) / 2.0;
 	        if(between(d_m, d_m2, d_r) == 0)    break;
@@ -148,26 +361,86 @@ double Dt(int x, Image *image, int i, int j) {
     I = fmin(I_1 / (double)image->scale, I_2 / (double)image->scale);
     I = fmin(I, 20);
     return I;
-    //I *= I; 
+    //I *= I;
     //return I * I;                                   /*Dを2乗する*/
     //return C_D * (I);
 
 }
 
+double D_function(int x, img *tmpL, img *tmpR, int h, int w, int maxLabel) {
+
+	int q = w - x;
+	double Ip, Iq, Ip_l, Ip_r, Iq_r, Iq_l, fwd, rev;
+
+	if ( (x < 0) || (x > maxLabel) || q < 0 ) { return INF; }
+
+	Ip = tmpL->data[h][w].r;
+	Iq = tmpR->data[h][q].r;
+
+	if ( !q )
+	{
+		Iq_l = INF;
+		Iq_r = (Iq + tmpR->data[h][q + 1].r) / 2.0;
+		if( between(Iq, Ip, Iq_r) ) { return 0; }
+	}
+	else if ( (q + 1) == tmpR->width )
+	{
+		Iq_l = (Iq + tmpR->data[h][q - 1].r) / 2.0;
+		Iq_r = INF;
+		if( between(Iq_l, Ip, Iq) ) { return 0; }
+	}
+	else
+	{
+		Iq_r = (Iq + tmpR->data[h][q + 1].r) / 2.0;
+		Iq_l = (Iq + tmpR->data[h][q - 1].r) / 2.0;
+		if( between(Iq_r, Ip, Iq) ) { return 0; }
+		if( between(Iq_l, Ip, Iq) ) { return 0; }
+	}
+
+	fwd = fmin3( fabs(Ip - Iq_l), fabs(Ip - Iq), fabs(Ip - Iq_r) );
+
+	if( !w )
+	{
+		Ip_l = INF;
+		Ip_r = (Ip + tmpL->data[h][w + 1].r) / 2.0;
+		if( between(Ip, Iq, Ip_r) ) { return 0; }
+	}
+	else if ( (w + 1) == tmpL->width )
+	{
+		Ip_l = (Ip + tmpL->data[h][w - 1].r) / 2.0;
+		Ip_r = INF;
+		if( between(Ip_l, Iq, Ip) ) { return 0; }
+	}
+	else
+	{
+		Ip_l = (Ip + tmpL->data[h][w - 1].r) / 2.0;
+		Ip_r = (Ip + tmpL->data[h][w + 1].r) / 2.0;
+		if( between(Ip_l, Iq, Ip) ) { return 0; }
+		if( between(Ip_r, Iq, Ip) ) { return 0; }
+	}
+
+	rev = fmin3( fabs(Ip_l - Iq), fabs(Ip - Iq), fabs(Ip_r - Iq) );
+    if (fmin3(fwd, rev, 20) < 0) printf("error\n");
+	return pow( fmin3(fwd, rev, 20), 1 ); // const = 20
+}
 
 
 double energy(Graph *G, int *label,  double T, int lambda, Image image) {
 
     double energy = 0;
     //* Dterm
-    // for (i = 1; i <= G->n - 2; i++) {
-    //     energy += data(i, label[i], image.width, image.left, image.right);
-    //     // energy += data(I_left[i], label[i]);
-    // }
-    // */
-
-    for(int i = 1; i < G->n - 1; i++){
-        energy += Dt(label[i], &image, i / image.width, i % image.width);
+    if (dterm == 1) {
+        for (int i = 1; i <= G->n - 2; i++) {
+            energy += Dt_9n(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            
+            // energy += data(i, label[i], image.height, image.width, image.left, image.right);
+        // energy += data(I_left[i], label[i]);
+        }
+    } else {
+        for(int i = 1; i <= G->n - 2; i++) {
+            // energy += Dt(label[i], &image, calheight(image.width, i), calwidth(image.width, i));
+            energy += D_function(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+        }
     }
     // Vterm
     for (int i = 1; i <= G->m - 2 * (G->n - 2); i++) {
@@ -198,7 +471,13 @@ void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image i
 
     // set Dterm
     for(i = 1; i < G->n - 1; i++){
-        temp = Dt(label[i], &image, i / image.width, i % image.width) - Dt(alpha, &image, i / image.width, i % image.width);
+        if(dterm == 0) {
+            temp =  D_function(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max) -  D_function(alpha, &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            // temp = Dt(label[i], &image, calheight(image.width, i), calwidth(image.width, i)) - Dt(alpha, &image, calheight(image.width, i), calwidth(image.width, i));
+        } else {
+            temp = Dt_9n(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max) - Dt_9n(alpha, &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            // temp = data(i, label[i], image.height, image.width, image.left, image.right) - data(i, alpha, image.height, image.width, image.left, image.right);
+        }
         if(temp > 0){
             G->capa[s2i_begin - 1 + i] +=  temp;
         }else{

@@ -1,0 +1,16 @@
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>
+Usage: ./a-estr <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>

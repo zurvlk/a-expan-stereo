@@ -28,24 +28,25 @@ int main(int argc, char *argv[]) {
 #if _OUTPUT_INFO_
     double maxflow;
 #endif
-
+    dterm = 0;
 #if _OUTPUT_PROGRESS_
     int k = 0;
     char pf[100];
     system("rm output/*.bmp &> /dev/null");
 #endif
 
-    if (argc != 2 && argc != 3 && argc != 5 && argc != 6) {
+    if (argc != 2 && argc != 3 && argc != 5 && argc != 6 && argc != 7) {
         printf("Usage: %s <input_file> <output_file(option)> <scale(option)> <lambda (option)> <T (oprion)>\n", argv[0]);
         return 1;
     }
 
     if (argc == 2) strcpy(output_file, "/dev/null");
     else strcpy(output_file, argv[2]);
-    if (argc == 5 || argc == 6) {
+    if (argc >= 5 && argc <= 7) {
         scale = atoi(argv[3]);
         lambda = atoi(argv[4]);
-        if(argc == 6) T = atof(argv[5]);
+        if(argc >= 6) T = atof(argv[5]);
+        if(argc == 7) dterm = atoi(argv[6]);
     }
 
 
@@ -65,7 +66,10 @@ int main(int argc, char *argv[]) {
     printf("output_file: %s\n", output_file);
     printf("label_size: %d\n", label_size);
     printf("lambda: %d\n", lambda);
-    printf("T: %.2f\n", T);
+    printf("T: %.2f\n", T * T);
+    printf("Data term: ");
+    if(dterm == 0) printf("Dt\n");
+    else printf("normal\n");
 
 
     node = grids_node + 2;
@@ -89,12 +93,13 @@ int main(int argc, char *argv[]) {
         return (EXIT_FAILURE);
     }
     // 輝度から初期ラベル設定
-    for (i = 1; i <= G.n - 2; i++) label[i] = 0;
+    for (i = 1; i <= G.n - 2; i++) label[i] = 5;
     printf("Energy (before): %lf\n", energy(&G, label, T, lambda, image));
 
     start = clock();
     last = label_size;
     flag = 1;
+    int c = 0;
     while (flag > 0) {
         temp = energy(&G, label, T, lambda, image);
         for (alpha = 0; alpha <= label_size; alpha++) {
@@ -107,7 +112,7 @@ int main(int argc, char *argv[]) {
             // capacity設定
             set_capacity(&G, label, alpha, T, lambda, image);
             // capacity(&G, label, I, alpha);
-
+            c++;
 #if _OUTPUT_INFO_
             printf("Maximum Flow: %5.2lf\n", boykov_kolmogorov(G, f, t));
             printf("after bk-max-f\n");
@@ -141,8 +146,10 @@ int main(int argc, char *argv[]) {
 #endif
         }
         flag = temp - energy(&G, label, T, lambda, image);
-        printf("Energy %lf\n", temp - flag);
+        // printf("Energy %lf\n", temp - flag);
     }
+
+    printf("ita: %d\n", c);
 
     printf("Energy (after): %lf\n", energy(&G, label, T, lambda, image));
     printf("Run time[%.2lf]\n", (double) (clock() - start) / CLOCKS_PER_SEC);
