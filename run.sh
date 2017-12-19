@@ -6,17 +6,17 @@ result=`date +%Y%m%d_%H-%M-%S`.log
 echo "---a-expan---"
 for dterm in 0 1
 do
-    for lambda in 7
+    for lambda in 6 7
     do
         for T in  1 2 3 4 5 6 7 8
         do
         # range_size <= label_size
             job_start=`date +%s`
-            ./a-estr input/tsukuba_ output/tsukuba_${dterm}_${lambda}_${T}.bmp  16 $lambda ${T} ${dterm} >> log/${dterm}_lambda_${lambda}_tsukuba${result}
+            ./a-estr input/tsukuba_ output/ae_tsukuba_${dterm}_${lambda}_${T}.bmp  16 $lambda ${T} ${dterm} >> log/ae_${dterm}_lambda_${lambda}_tsukuba${result}
             job_end=`date +%s`
             time=$((job_end - job_start));
             count=`expr $count + 1`
-            echo "tsukuba, lambda=${lambda} [${time}s]";
+            echo "tsukuba, lambda=${lambda} T=${T} [${time}s]";
         done
         git add log/${dterm}_lambda_${lambda}_tsukuba${result}
         git commit -m "job_${result}"
@@ -83,5 +83,5 @@ end_time=`date +%s`
 time=$((end_time - start_time));
 rm temp.txt
 
-echo "@trsk_1st 全ての処理が完了しましたっ(GRSA)! 総所要時間[${time}s]" | tw --pipe --user="trsk_1st"
+echo "@trsk_1st 全ての処理が完了しましたっ(alpha-expansion)! 総所要時間[${time}s]" | tw --pipe --user="trsk_1st"
 echo "------"

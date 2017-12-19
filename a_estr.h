@@ -2,10 +2,10 @@
 #include "bmp.h"
 
 typedef struct __INPUT_BITMAPS__ {
-    img raw_left;
-    img raw_right;
-    img truth;
-    img output;
+    img *raw_left;
+    img *raw_right;
+    img *truth;
+    img *output;
     int *left;
     int *right;
     int width;

@@ -1,0 +1,12 @@
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: t2.bmp
+label_size: 15
+lambda: 6
+T: 256.00
+Data term: normal
+Energy (before): inf
+ita: 50
+Energy (after): 1413279.609829
+Run time[11.34]
+Error rate : 9.321651

@@ -14,7 +14,7 @@
 
 int main(int argc, char *argv[]) {
     long int i, j, node, edge, grids_node;
-    int scale = 16, alpha, label_size, last;
+    int scale = 16, alpha, label_size, last, chk;
     int *t, *label;
     int lambda = 1;
     // I->入力画像の輝度, t->2値変数, label->ラベル付け
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
         return (EXIT_FAILURE);
     }
     // 輝度から初期ラベル設定
-    for (i = 1; i <= G.n - 2; i++) label[i] = 5;
+    for (i = 1; i <= G.n - 2; i++) label[i] = 8;
     printf("Energy (before): %lf\n", energy(&G, label, T, lambda, image));
 
     start = clock();
@@ -123,25 +123,35 @@ int main(int argc, char *argv[]) {
             //削除された枝はvoykov_kolmogorov(G, f, t)で再度リストに追加されている
 
             // tを基にラベル更新
+            // for (i = 1; i <= G.n - 2; i++) {
+            //     if(t[i] == 1) {
+            //         label[i] = alpha;
+            //         last = alpha;
+            //     }
+            // }
 
             for (i = 1; i <= G.n - 2; i++) {
+                chk = label[i];
                 if(t[i] == 1) {
-                    label[i] = alpha;
+                    label[i] = alpha > label[i] ? alpha : label[i] ;
                     last = alpha;
+                } else {
+                    label[i] = alpha < label[i] ? alpha : label[i];
                 }
+                if (chk != label[i]) last = alpha;
             }
 
 
 #if _OUTPUT_PROGRESS_
             for (i = 0; i <  image.height; i++) {
                 for (j = 0; j < image.width; j++) {
-                    image.output.data[i][j].r = label[i * image.width + j + 1] * scale;
-                    image.output.data[i][j].g = image.output.data[i][j].r;
-                    image.output.data[i][j].b = image.output.data[i][j].r;
+                    image.output->data[i][j].r = label[i * image.width + j + 1] * scale;
+                    image.output->data[i][j].g = image.output->data[i][j].r;
+                    image.output->data[i][j].b = image.output->data[i][j].r;
                 }
             }
             sprintf(pf, "output/image_%04d.bmp", k);
-            WriteBmp(pf, &(image.output));
+            WriteBmp(pf, image.output);
             k++;
 #endif
         }
@@ -162,12 +172,12 @@ int main(int argc, char *argv[]) {
     // output to bitmap file
     for (i = 0; i <  image.height; i++) {
         for (j = 0; j < image.width; j++) {
-            image.output.data[i][j].r = label[i * image.width + j + 1] * scale;
-            image.output.data[i][j].g = image.output.data[i][j].r;
-            image.output.data[i][j].b = image.output.data[i][j].r;
+            image.output->data[i][j].r = label[i * image.width + j + 1] * scale;
+            image.output->data[i][j].g = image.output->data[i][j].r;
+            image.output->data[i][j].b = image.output->data[i][j].r;
         }
     }
-    WriteBmp(output_file, &(image.output));
+    WriteBmp(output_file, image.output);
 
 #if _OUTPUT_PROGRESS_
     if (system("cd output && yes |./mkmovie.sh") == -1) {
@@ -176,10 +186,10 @@ int main(int argc, char *argv[]) {
 #endif
 
     if (strcmp(output_file, "/dev/null") != 0){
-        ReadBmp(output_file, &(image.output));
+        ReadBmp(output_file, (image.output));
         // Gray(&truth, &truth);
-        Gray(&(image.output), &(image.output));
-        error = err_rate((image.output), image);
+        Gray((image.output), (image.output));
+        error = err_rate(*image.output, image);
         printf("Error rate : %lf\n", error);
     }
     delGraph(&G);

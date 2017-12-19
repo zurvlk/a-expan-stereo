@@ -34,18 +34,24 @@ double readStrBmp(Image *image, char filename[], int scale) {
     strcat(imgright, "right.bmp");
     strcat(imgtruth, "truth.bmp");
 
-    ReadBmp(imgleft, &(image->raw_left));
-    ReadBmp(imgright, &(image->raw_right));
-    ReadBmp(imgtruth, &(image->truth));
-    ReadBmp(imgtruth, &(image->output));
+    // Read Bitmap
+    image->raw_left = (img *)malloc(sizeof(img));
+    image->raw_right = (img *)malloc(sizeof(img));
+    image->output = (img *)malloc(sizeof(img));
+    image->truth = (img *)malloc(sizeof(img));
 
-    image->width = image->raw_left.width;
-    image->height = image->raw_left.height;
+    ReadBmp(imgleft, (image->raw_left));
+    ReadBmp(imgright, (image->raw_right));
+    ReadBmp(imgtruth, (image->truth));
+    ReadBmp(imgtruth, (image->output));
+
+    image->width = image->raw_left->width;
+    image->height = image->raw_left->height;
     grids_node = image->height * image->width;
 
-    Gray(&(image->raw_left), &(image->raw_left));
-    Gray(&(image->raw_right), &(image->raw_right));
-    Gray(&(image->truth), &(image->truth));
+    Gray((image->raw_left), (image->raw_left));
+    Gray((image->raw_right), (image->raw_right));
+    Gray((image->truth), (image->truth));
 
 
     if ((image->left = (int *)malloc(sizeof(int) * (grids_node + 1))) == NULL) {
@@ -59,12 +65,12 @@ double readStrBmp(Image *image, char filename[], int scale) {
 
     for (i = 0; i <  image->height; i++) {
         for (j = 0; j < image->width; j++) {
-            image->left[i * image->width + j + 1] = image->raw_left.data[i][j].r / scale;
+            image->left[i * image->width + j + 1] = image->raw_left->data[i][j].r / scale;
         }
     }
     for (i = 0; i <  image->height; i++) {
         for (j = 0; j < image->width; j++) {
-            image->right[i * image->width + j + 1] = image->raw_right.data[i][j].r / scale;
+            image->right[i * image->width + j + 1] = image->raw_right->data[i][j].r / scale;
         }
     }
     return grids_node;
@@ -311,48 +317,48 @@ double Dt(int x, Image *image, int i, int j) {
     int flag = 1;
     while(flag){
 
-	    d_m = image->raw_left.data[i][j].r;
-	    d_m2 =  image->raw_right.data[i][j - x].r;
+	    d_m = image->raw_left->data[i][j].r;
+	    d_m2 =  image->raw_right->data[i][j - x].r;
         // D_fwd
-	    if((j - x - 1 >= 0) && (j - x + 1 <= image->raw_right.width - 1)){
+	    if((j - x - 1 >= 0) && (j - x + 1 <= image->raw_right->width - 1)){
 
-	        d_l2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x - 1].r) / 2.0;
-            d_r2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x + 1].r) / 2.0;
+	        d_l2 = (image->raw_right->data[i][j - x].r + image->raw_right->data[i][j - x - 1].r) / 2.0;
+            d_r2 = (image->raw_right->data[i][j - x].r + image->raw_right->data[i][j - x + 1].r) / 2.0;
 	        if(between(d_l2, d_m, d_m2) == 0)    break;
 	        if(between(d_r2, d_m, d_m2) == 0)    break;
 	        I_1 = fmin3(fabs(d_m - d_l2), fabs(d_m - d_m2), fabs(d_m - d_r2));              /*特に制約なし*/
 
 	    }else if(j - x - 1 < 0){
 
-	        d_r2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x + 1].r) / 2.0;
+	        d_r2 = (image->raw_right->data[i][j - x].r + image->raw_right->data[i][j - x + 1].r) / 2.0;
 	        if(between(d_m2, d_m, d_r2) == 0)    break;
 	        I_1 = fmin(fabs(d_m - d_m2), fabs(d_m - d_r2));                                /*Rの左端が出る*/
 
 	    }else{
 
-	        d_l2 = (image->raw_right.data[i][j - x].r + image->raw_right.data[i][j - x - 1].r) / 2.0;
+	        d_l2 = (image->raw_right->data[i][j - x].r + image->raw_right->data[i][j - x - 1].r) / 2.0;
 	        if(between(d_l2, d_m, d_m2) == 0)    break;
 	        I_1 = fmin(fabs(d_m - d_l2), fabs(d_m - d_m2));                                /*Rの右端が出る*/
 	    }
 
         // D_rev
-	    if((j != 0) && (j != image->raw_left.width - 1)){
+	    if((j != 0) && (j != image->raw_left->width - 1)){
 
-	        d_l = (image->raw_left.data[i][j].r + image->raw_left.data[i][j - 1].r) / 2.0;
-	        d_r = (image->raw_left.data[i][j].r + image->raw_left.data[i][j + 1].r) / 2.0;
+	        d_l = (image->raw_left->data[i][j].r + image->raw_left->data[i][j - 1].r) / 2.0;
+	        d_r = (image->raw_left->data[i][j].r + image->raw_left->data[i][j + 1].r) / 2.0;
 	        if(between(d_l, d_m2, d_m) == 0)    break;
 	        if(between(d_r, d_m2, d_m) == 0)    break;
 	        I_2 = fmin3(fabs(d_l - d_m2), fabs(d_m - d_m2), fabs(d_r - d_m2));              /*特に制約なし*/
 
 	    }else if(j == 0){
 
-	        d_r = (image->raw_left.data[i][j].r + image->raw_left.data[i][j + 1].r) / 2.0;
+	        d_r = (image->raw_left->data[i][j].r + image->raw_left->data[i][j + 1].r) / 2.0;
 	        if(between(d_m, d_m2, d_r) == 0)    break;
 	        I_2 = fmin(fabs(d_m - d_m2), fabs(d_r - d_m2));                                /*Lの左端が出る*/
 
 	    }else{
 
-	        d_l = (image->raw_left.data[i][j].r + image->raw_left.data[i][j - 1].r) / 2.0;
+	        d_l = (image->raw_left->data[i][j].r + image->raw_left->data[i][j - 1].r) / 2.0;
 	        if(between(d_l, d_m2, d_m) == 0)    break;
 	        I_2 = fmin(fabs(d_l - d_m2), fabs(d_m - d_m2));                                /*Lの右端が出る*/
 	    }
@@ -431,7 +437,7 @@ double energy(Graph *G, int *label,  double T, int lambda, Image image) {
     //* Dterm
     if (dterm == 1) {
         for (int i = 1; i <= G->n - 2; i++) {
-            energy += Dt_9n(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            energy += Dt_9n(label[i], image.raw_left, image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
             
             // energy += data(i, label[i], image.height, image.width, image.left, image.right);
         // energy += data(I_left[i], label[i]);
@@ -439,7 +445,7 @@ double energy(Graph *G, int *label,  double T, int lambda, Image image) {
     } else {
         for(int i = 1; i <= G->n - 2; i++) {
             // energy += Dt(label[i], &image, calheight(image.width, i), calwidth(image.width, i));
-            energy += D_function(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            energy += D_function(label[i], image.raw_left, image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
         }
     }
     // Vterm
@@ -450,7 +456,7 @@ double energy(Graph *G, int *label,  double T, int lambda, Image image) {
 }
 
 void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image image) {
-    int i, s2i_begin, i2t_begin, grids_node;
+    int i, s2i_begin, i2t_begin, grids_node, min1, max1, min2, max2;
     double A, B, C, D, temp;
     //　source->各ノード　を示す枝の開始位置
     s2i_begin = G->m - 2 * (G->n - 2) + 1;
@@ -471,11 +477,17 @@ void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image i
 
     // set Dterm
     for(i = 1; i < G->n - 1; i++){
+        min1 = alpha > label[i] ? label[i] : alpha;
+        max1 = alpha < label[i] ? label[i] : alpha;
         if(dterm == 0) {
-            temp =  D_function(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max) -  D_function(alpha, &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            temp =  D_function(min1, image.raw_left, image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max) -  D_function(max1, image.raw_left, image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            // temp =  D_function(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max) -  D_function(alpha, &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            
             // temp = Dt(label[i], &image, calheight(image.width, i), calwidth(image.width, i)) - Dt(alpha, &image, calheight(image.width, i), calwidth(image.width, i));
         } else {
-            temp = Dt_9n(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max) - Dt_9n(alpha, &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            temp = Dt_9n(min1, image.raw_left, image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max) - Dt_9n(max1, image.raw_left, image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            // temp = Dt_9n(label[i], &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max) - Dt_9n(alpha, &image.raw_left, &image.raw_right, calheight(image.width, i), calwidth(image.width, i), image.label_max);
+            
             // temp = data(i, label[i], image.height, image.width, image.left, image.right) - data(i, alpha, image.height, image.width, image.left, image.right);
         }
         if(temp > 0){
@@ -488,12 +500,21 @@ void set_capacity(Graph *G, int *label, int alpha, double T, int lambda, Image i
     for(i = 1; i < s2i_begin; i++) {
         //head,tailが共にalpha->枝を削除
         if (label[G->tail[i]] != alpha && label[G->head[i]] != alpha) {
-            A = pairwise(label[G->tail[i]], label[G->head[i]], T, lambda);
-            B = pairwise(label[G->tail[i]], alpha, T, lambda);
-            C = pairwise(alpha, label[G->head[i]], T, lambda);
-            D = pairwise(alpha, alpha, T, lambda);
+            min1 = alpha > label[G->tail[i]] ? label[G->tail[i]] : alpha;
+            min2 = alpha > label[G->head[i]] ? label[G->head[i]] : alpha;
+            max1 = alpha < label[G->tail[i]] ? label[G->tail[i]] : alpha;
+            max2 = alpha < label[G->head[i]] ? label[G->head[i]] : alpha;
+            A = pairwise(min1, min2, T, lambda);
+            B = pairwise(min1, max2, T, lambda);
+            C = pairwise(max1, min2, T, lambda);
+            D = pairwise(max1, max2, T, lambda);
 
-            A = fmin(A, B + C - D);
+            // A = pairwise(label[G->tail[i]], label[G->head[i]], T, lambda);
+            // B = pairwise(label[G->tail[i]], alpha, T, lambda);
+            // C = pairwise(alpha, label[G->head[i]], T, lambda);
+            // D = pairwise(alpha, alpha, T, lambda);
+
+            // A = fmin(A, B + C - D);
             G->capa[i] = B + C - A - D;
             // source->i
             temp = B - D;
@@ -566,18 +587,18 @@ void set_all_edge(Graph *G, int height, int width) {
 double err_rate(img output, Image image) {
     int i, error_count = 0;
     double err;
-    if (image.truth.data[0][0].r) {
-        for(i = 1; i <= (image.output.height) * (image.output.width); i++) {
-            if (abs(image.output.data[(i - 1) / image.output.width][(i - 1) % image.output.width].r - image.truth.data[(i - 1) / image.truth.width][(i - 1) % image.truth.width].r )
+    if (image.truth->data[0][0].r) {
+        for(i = 1; i <= (image.output->height) * (image.output->width); i++) {
+            if (abs(image.output->data[(i - 1) / image.output->width][(i - 1) % image.output->width].r - image.truth->data[(i - 1) / image.truth->width][(i - 1) % image.truth->width].r )
                 >= image.scale + 1) {
                 error_count++;
             }
         }
     } else {
-        for(i = 1; i <= (image.output.height) * (image.output.width); i++) {
-            if ((i - 1) / image.output.width >= image.scale && (i - 1) % image.output.width >= image.scale &&
-                (i - 1) / image.output.width <= image.output.height - image.scale && (i - 1) % image.output.width <= image.output.width - image.scale) {
-                if (abs(image.output.data[(i - 1) / image.output.width][(i - 1) % image.output.width].r - image.truth.data[(i - 1) / image.truth.width][(i - 1) % image.truth.width].r )
+        for(i = 1; i <= (image.output->height) * (image.output->width); i++) {
+            if ((i - 1) / image.output->width >= image.scale && (i - 1) % image.output->width >= image.scale &&
+                (i - 1) / image.output->width <= image.output->height - image.scale && (i - 1) % image.output->width <= image.output->width - image.scale) {
+                if (abs(image.output->data[(i - 1) / image.output->width][(i - 1) % image.output->width].r - image.truth->data[(i - 1) / image.truth->width][(i - 1) % image.truth->width].r )
                     >= image.scale + 1) {
                     error_count++;
                 }

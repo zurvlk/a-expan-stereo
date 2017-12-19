@@ -1,0 +1,96 @@
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_tsukuba_0_6_1.bmp
+label_size: 15
+lambda: 6
+T: 1.00
+Data term: Dt
+Energy (before): inf
+ita: 57
+Energy (after): 71695.500000
+Run time[11.58]
+Error rate : 7.507776
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_tsukuba_0_6_2.bmp
+label_size: 15
+lambda: 6
+T: 4.00
+Data term: Dt
+Energy (before): inf
+ita: 54
+Energy (after): 114654.000000
+Run time[11.97]
+Error rate : 8.602792
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_tsukuba_0_6_3.bmp
+label_size: 15
+lambda: 6
+T: 9.00
+Data term: Dt
+Energy (before): inf
+ita: 70
+Energy (after): 135004.500000
+Run time[17.08]
+Error rate : 8.664280
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_tsukuba_0_6_4.bmp
+label_size: 15
+lambda: 6
+T: 16.00
+Data term: Dt
+Energy (before): inf
+ita: 45
+Energy (after): 142863.500000
+Run time[13.36]
+Error rate : 9.501591
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_tsukuba_0_6_5.bmp
+label_size: 15
+lambda: 6
+T: 25.00
+Data term: Dt
+Energy (before): inf
+ita: 44
+Energy (after): 145550.500000
+Run time[15.25]
+Error rate : 10.120081
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_tsukuba_0_6_6.bmp
+label_size: 15
+lambda: 6
+T: 36.00
+Data term: Dt
+Energy (before): inf
+ita: 44
+Energy (after): 145550.500000
+Run time[17.07]
+Error rate : 10.120081
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_tsukuba_0_6_7.bmp
+label_size: 15
+lambda: 6
+T: 49.00
+Data term: Dt
+Energy (before): inf
+ita: 44
+Energy (after): 145550.500000
+Run time[18.08]
+Error rate : 10.120081
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_tsukuba_0_6_8.bmp
+label_size: 15
+lambda: 6
+T: 64.00
+Data term: Dt
+Energy (before): inf
+ita: 44
+Energy (after): 144924.500000
+Run time[19.30]
+Error rate : 10.120081
