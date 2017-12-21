@@ -1,0 +1,96 @@
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_ch_tsukuba_0_6_1.bmp
+label_size: 15
+lambda: 6
+T: 1.00
+Data term: Dt
+Energy (before): inf
+ita: 96
+Energy (after): 76351.000000
+Run time[18.10]
+Error rate : 8.090097
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_ch_tsukuba_0_6_2.bmp
+label_size: 15
+lambda: 6
+T: 4.00
+Data term: Dt
+Energy (before): inf
+ita: 64
+Energy (after): 112828.500000
+Run time[12.68]
+Error rate : 8.629919
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_ch_tsukuba_0_6_3.bmp
+label_size: 15
+lambda: 6
+T: 9.00
+Data term: Dt
+Energy (before): inf
+ita: 64
+Energy (after): 129447.000000
+Run time[13.57]
+Error rate : 9.276440
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_ch_tsukuba_0_6_4.bmp
+label_size: 15
+lambda: 6
+T: 16.00
+Data term: Dt
+Energy (before): inf
+ita: 80
+Energy (after): 134616.000000
+Run time[17.72]
+Error rate : 9.745732
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_ch_tsukuba_0_6_5.bmp
+label_size: 15
+lambda: 6
+T: 25.00
+Data term: Dt
+Energy (before): inf
+ita: 64
+Energy (after): 138581.000000
+Run time[15.14]
+Error rate : 10.425709
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_ch_tsukuba_0_6_6.bmp
+label_size: 15
+lambda: 6
+T: 36.00
+Data term: Dt
+Energy (before): inf
+ita: 64
+Energy (after): 138581.000000
+Run time[15.73]
+Error rate : 10.425709
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_ch_tsukuba_0_6_7.bmp
+label_size: 15
+lambda: 6
+T: 49.00
+Data term: Dt
+Energy (before): inf
+ita: 64
+Energy (after): 137497.500000
+Run time[16.69]
+Error rate : 10.425709
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/ae_ch_tsukuba_0_6_8.bmp
+label_size: 15
+lambda: 6
+T: 64.00
+Data term: Dt
+Energy (before): inf
+ita: 64
+Energy (after): 137291.500000
+Run time[17.13]
+Error rate : 10.425709
