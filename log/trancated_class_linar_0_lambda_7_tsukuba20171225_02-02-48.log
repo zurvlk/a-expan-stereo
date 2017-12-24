@@ -1,0 +1,96 @@
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated_class_linar_tsukuba_0_7_1.bmp
+label_size: 15
+lambda: 7
+T: 1.00
+Data term: Dt
+Energy (before): 14400354416.500000
+ita: 58
+Energy (after): 87877.000000
+Run time[11.22]
+Error rate : 8.271846
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated_class_linar_tsukuba_0_7_2.bmp
+label_size: 15
+lambda: 7
+T: 4.00
+Data term: Dt
+Energy (before): 14400354416.500000
+ita: 72
+Energy (after): 103544.000000
+Run time[13.94]
+Error rate : 8.308015
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated_class_linar_tsukuba_0_7_3.bmp
+label_size: 15
+lambda: 7
+T: 9.00
+Data term: Dt
+Energy (before): 14400354416.500000
+ita: 47
+Energy (after): 112202.500000
+Run time[9.25]
+Error rate : 8.234773
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated_class_linar_tsukuba_0_7_4.bmp
+label_size: 15
+lambda: 7
+T: 16.00
+Data term: Dt
+Energy (before): 14400354416.500000
+ita: 47
+Energy (after): 117307.500000
+Run time[9.03]
+Error rate : 8.214880
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated_class_linar_tsukuba_0_7_5.bmp
+label_size: 15
+lambda: 7
+T: 25.00
+Data term: Dt
+Energy (before): 14400354416.500000
+ita: 57
+Energy (after): 120382.500000
+Run time[11.01]
+Error rate : 8.208550
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated_class_linar_tsukuba_0_7_6.bmp
+label_size: 15
+lambda: 7
+T: 36.00
+Data term: Dt
+Energy (before): 14400354416.500000
+ita: 59
+Energy (after): 122124.500000
+Run time[11.52]
+Error rate : 8.254666
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated_class_linar_tsukuba_0_7_7.bmp
+label_size: 15
+lambda: 7
+T: 49.00
+Data term: Dt
+Energy (before): 14400354416.500000
+ita: 73
+Energy (after): 122822.000000
+Run time[14.32]
+Error rate : 8.344184
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated_class_linar_tsukuba_0_7_8.bmp
+label_size: 15
+lambda: 7
+T: 64.00
+Data term: Dt
+Energy (before): 14400354416.500000
+ita: 59
+Energy (after): 123297.500000
+Run time[12.10]
+Error rate : 8.361364
