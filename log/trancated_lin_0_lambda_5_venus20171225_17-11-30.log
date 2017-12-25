@@ -1,0 +1,96 @@
+----------------------------------------------
+input_file: input/venus_
+output_file: output/trancated_lin_venus_0_5_1.bmp
+label_size: 31
+lambda: 5
+T: 1.00
+Data term: Dt
+Energy (before): 19150726556.500000
+ita: 130
+Energy (after): 139667.000000
+Run time[39.47]
+Error rate : 5.060100
+----------------------------------------------
+input_file: input/venus_
+output_file: output/trancated_lin_venus_0_5_2.bmp
+label_size: 31
+lambda: 5
+T: 4.00
+Data term: Dt
+Energy (before): 19150726556.500000
+ita: 96
+Energy (after): 166587.500000
+Run time[30.33]
+Error rate : 5.377748
+----------------------------------------------
+input_file: input/venus_
+output_file: output/trancated_lin_venus_0_5_3.bmp
+label_size: 31
+lambda: 5
+T: 9.00
+Data term: Dt
+Energy (before): 19150726556.500000
+ita: 104
+Energy (after): 192094.000000
+Run time[34.98]
+Error rate : 6.310236
+----------------------------------------------
+input_file: input/venus_
+output_file: output/trancated_lin_venus_0_5_4.bmp
+label_size: 31
+lambda: 5
+T: 16.00
+Data term: Dt
+Energy (before): 19150726556.500000
+ita: 106
+Energy (after): 229478.000000
+Run time[40.52]
+Error rate : 14.556437
+----------------------------------------------
+input_file: input/venus_
+output_file: output/trancated_lin_venus_0_5_5.bmp
+label_size: 31
+lambda: 5
+T: 25.00
+Data term: Dt
+Energy (before): 19150726556.500000
+ita: 129
+Energy (after): 236980.500000
+Run time[50.56]
+Error rate : 16.251760
+----------------------------------------------
+input_file: input/venus_
+output_file: output/trancated_lin_venus_0_5_6.bmp
+label_size: 31
+lambda: 5
+T: 36.00
+Data term: Dt
+Energy (before): 19150726556.500000
+ita: 129
+Energy (after): 242191.500000
+Run time[52.30]
+Error rate : 16.306506
+----------------------------------------------
+input_file: input/venus_
+output_file: output/trancated_lin_venus_0_5_7.bmp
+label_size: 31
+lambda: 5
+T: 49.00
+Data term: Dt
+Energy (before): 19150726556.500000
+ita: 129
+Energy (after): 245875.500000
+Run time[55.58]
+Error rate : 16.287254
+----------------------------------------------
+input_file: input/venus_
+output_file: output/trancated_lin_venus_0_5_8.bmp
+label_size: 31
+lambda: 5
+T: 64.00
+Data term: Dt
+Energy (before): 19150726556.500000
+ita: 129
+Energy (after): 256418.000000
+Run time[58.38]
+Error rate : 18.605840
