@@ -1,0 +1,96 @@
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy__0_8_1.bmp
+label_size: 63
+lambda: 8
+T: 1.00
+Data term: Dt
+Energy (before): 18751898655.000000
+ita: 336
+Energy (after): 395461.000000
+Run time[97.36]
+Error rate : 24.768000
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy__0_8_2.bmp
+label_size: 63
+lambda: 8
+T: 4.00
+Data term: Dt
+Energy (before): 18751898655.000000
+ita: 470
+Energy (after): 515498.500000
+Run time[141.39]
+Error rate : 24.916148
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy__0_8_3.bmp
+label_size: 63
+lambda: 8
+T: 9.00
+Data term: Dt
+Energy (before): 18751898655.000000
+ita: 770
+Energy (after): 601012.500000
+Run time[240.82]
+Error rate : 25.397926
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy__0_8_4.bmp
+label_size: 63
+lambda: 8
+T: 16.00
+Data term: Dt
+Energy (before): 18751898655.000000
+ita: 412
+Energy (after): 687298.000000
+Run time[150.02]
+Error rate : 26.277333
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy__0_8_5.bmp
+label_size: 63
+lambda: 8
+T: 25.00
+Data term: Dt
+Energy (before): 18751898655.000000
+ita: 347
+Energy (after): 772266.000000
+Run time[145.13]
+Error rate : 29.360593
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy__0_8_6.bmp
+label_size: 63
+lambda: 8
+T: 36.00
+Data term: Dt
+Energy (before): 18751898655.000000
+ita: 219
+Energy (after): 844803.500000
+Run time[103.60]
+Error rate : 35.776593
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy__0_8_7.bmp
+label_size: 63
+lambda: 8
+T: 49.00
+Data term: Dt
+Energy (before): 18751898655.000000
+ita: 219
+Energy (after): 879744.000000
+Run time[115.47]
+Error rate : 35.530074
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy__0_8_8.bmp
+label_size: 63
+lambda: 8
+T: 64.00
+Data term: Dt
+Energy (before): 18751898655.000000
+ita: 284
+Energy (after): 908430.000000
+Run time[170.46]
+Error rate : 36.314667
