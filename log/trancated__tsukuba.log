@@ -198,3 +198,99 @@ ita: 59
 Energy (after): 123297.500000
 Run time[11.26]
 Error rate : 8.361364
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_0_7_1.bmp
+label_size: 15
+lambda: 7
+T: 1.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 14400354416.500000
+ita: 51
+Energy (after): 76906.500000
+Run time[9.80]
+Error rate : 8.275463
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_0_7_2.bmp
+label_size: 15
+lambda: 7
+T: 4.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 14400354416.500000
+ita: 45
+Energy (after): 121415.000000
+Run time[8.85]
+Error rate : 8.313440
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_0_7_3.bmp
+label_size: 15
+lambda: 7
+T: 9.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 14400354416.500000
+ita: 49
+Energy (after): 147810.000000
+Run time[9.72]
+Error rate : 8.558485
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_0_7_4.bmp
+label_size: 15
+lambda: 7
+T: 16.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 14400354416.500000
+ita: 45
+Energy (after): 155083.000000
+Run time[9.59]
+Error rate : 8.981662
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_0_7_5.bmp
+label_size: 15
+lambda: 7
+T: 25.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 14400354416.500000
+ita: 46
+Energy (after): 166273.000000
+Run time[10.43]
+Error rate : 9.402127
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_0_7_6.bmp
+label_size: 15
+lambda: 7
+T: 36.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 14400354416.500000
+ita: 42
+Energy (after): 168581.000000
+Run time[10.41]
+Error rate : 11.946615
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_0_7_7.bmp
+label_size: 15
+lambda: 7
+T: 49.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 14400354416.500000
+ita: 42
+Energy (after): 168581.000000
+Run time[10.12]
+Error rate : 11.946615
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_0_7_8.bmp
+label_size: 15
+lambda: 7
+T: 64.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 14400354416.500000
+ita: 42
+Energy (after): 168581.000000
+Run time[10.42]
+Error rate : 11.946615
