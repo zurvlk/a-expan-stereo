@@ -1,0 +1,96 @@
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_0_8_1.bmp
+label_size: 63
+lambda: 8
+T: 1.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 75001244793.000000
+ita: 268
+Energy (after): 395412.000000
+Run time[75.09]
+Error rate : 24.958222
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_0_8_2.bmp
+label_size: 63
+lambda: 8
+T: 4.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 75001244793.000000
+ita: 259
+Energy (after): 514266.000000
+Run time[75.20]
+Error rate : 24.452148
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_0_8_3.bmp
+label_size: 63
+lambda: 8
+T: 9.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 75001244793.000000
+ita: 587
+Energy (after): 600733.500000
+Run time[174.76]
+Error rate : 25.434667
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_0_8_4.bmp
+label_size: 63
+lambda: 8
+T: 16.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 75001244793.000000
+ita: 475
+Energy (after): 673175.500000
+Run time[158.09]
+Error rate : 26.990815
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_0_8_5.bmp
+label_size: 63
+lambda: 8
+T: 25.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 75001244793.000000
+ita: 347
+Energy (after): 762445.000000
+Run time[133.53]
+Error rate : 30.083556
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_0_8_6.bmp
+label_size: 63
+lambda: 8
+T: 36.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 75001244793.000000
+ita: 219
+Energy (after): 830140.500000
+Run time[97.34]
+Error rate : 35.707852
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_0_8_7.bmp
+label_size: 63
+lambda: 8
+T: 49.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 75001244793.000000
+ita: 219
+Energy (after): 869154.000000
+Run time[106.69]
+Error rate : 35.707852
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_0_8_8.bmp
+label_size: 63
+lambda: 8
+T: 64.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: Vpq(fp, fq) = (fp - fq)^2Energy (before): 75001244793.000000
+ita: 219
+Energy (after): 914154.000000
+Run time[125.13]
+Error rate : 35.707852
