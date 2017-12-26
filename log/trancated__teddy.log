@@ -94,3 +94,107 @@ ita: 219
 Energy (after): 914154.000000
 Run time[125.13]
 Error rate : 35.707852
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_1_8_1.bmp
+label_size: 63
+lambda: 8
+T: 1.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 75001244793.000000
+ita: 278
+Energy (after): 438837.000000
+Run time[87.79]
+Error rate : 24.813630
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_1_8_2.bmp
+label_size: 63
+lambda: 8
+T: 4.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 75001244793.000000
+ita: 335
+Energy (after): 480368.000000
+Run time[101.27]
+Error rate : 22.663704
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_1_8_3.bmp
+label_size: 63
+lambda: 8
+T: 9.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 75001244793.000000
+ita: 335
+Energy (after): 506111.500000
+Run time[98.83]
+Error rate : 23.917630
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_1_8_4.bmp
+label_size: 63
+lambda: 8
+T: 16.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 75001244793.000000
+ita: 774
+Energy (after): 523743.000000
+Run time[223.32]
+Error rate : 24.160000
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_1_8_5.bmp
+label_size: 63
+lambda: 8
+T: 25.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 75001244793.000000
+ita: 1089
+Energy (after): 536104.500000
+Run time[315.83]
+Error rate : 24.249481
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_1_8_6.bmp
+label_size: 63
+lambda: 8
+T: 36.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 75001244793.000000
+ita: 775
+Energy (after): 546827.000000
+Run time[225.73]
+Error rate : 24.274963
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_1_8_7.bmp
+label_size: 63
+lambda: 8
+T: 49.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 75001244793.000000
+ita: 582
+Energy (after): 556224.500000
+Run time[175.41]
+Error rate : 24.226963
+----------------------------------------------
+input_file: input/teddy_
+output_file: output/trancated__teddy_0_1_8_8.bmp
+label_size: 63
+lambda: 8
+T: 64.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 75001244793.000000
+ita: 523
+Energy (after): 563886.000000
+Run time[157.89]
+Error rate : 24.206815
