@@ -94,3 +94,107 @@ ita: 42
 Energy (after): 168581.000000
 Run time[10.26]
 Error rate : 11.946615
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_1_7_1.bmp
+label_size: 15
+lambda: 7
+T: 1.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 14400354416.500000
+ita: 58
+Energy (after): 87877.000000
+Run time[10.67]
+Error rate : 8.271846
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_1_7_2.bmp
+label_size: 15
+lambda: 7
+T: 4.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 14400354416.500000
+ita: 72
+Energy (after): 103544.000000
+Run time[13.78]
+Error rate : 8.308015
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_1_7_3.bmp
+label_size: 15
+lambda: 7
+T: 9.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 14400354416.500000
+ita: 47
+Energy (after): 112202.500000
+Run time[9.24]
+Error rate : 8.234773
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_1_7_4.bmp
+label_size: 15
+lambda: 7
+T: 16.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 14400354416.500000
+ita: 47
+Energy (after): 117307.500000
+Run time[9.09]
+Error rate : 8.214880
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_1_7_5.bmp
+label_size: 15
+lambda: 7
+T: 25.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 14400354416.500000
+ita: 57
+Energy (after): 120382.500000
+Run time[11.00]
+Error rate : 8.208550
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_1_7_6.bmp
+label_size: 15
+lambda: 7
+T: 36.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 14400354416.500000
+ita: 59
+Energy (after): 122124.500000
+Run time[11.08]
+Error rate : 8.254666
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_1_7_7.bmp
+label_size: 15
+lambda: 7
+T: 49.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 14400354416.500000
+ita: 73
+Energy (after): 122822.000000
+Run time[14.19]
+Error rate : 8.344184
+----------------------------------------------
+input_file: input/tsukuba_
+output_file: output/trancated__tsukuba_0_1_7_8.bmp
+label_size: 15
+lambda: 7
+T: 64.00
+Dterm: Birchfield and Tomasi’s function
+Vterm: piecewise linear function
+Energy (before): 14400354416.500000
+ita: 59
+Energy (after): 123297.500000
+Run time[11.26]
+Error rate : 8.361364
